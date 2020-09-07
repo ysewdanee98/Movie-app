@@ -1,0 +1,7 @@
+<div class="header">
+  <div class="buttonSettings" (click)="popup = true">
+  </div>
+  <h1 style="color: black;">Welcome</h1>
+</div>
+
+<div *ngIf="popup == true"><app-pop-up-setting [popUpStatus]=popup (newPopUpEvent)="popUpToggle()"></app-pop-up-setting></div>

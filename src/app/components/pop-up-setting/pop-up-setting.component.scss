@@ -1,0 +1,31 @@
+.overlay {
+  position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  margin: 100px auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  width: 20%;
+  position: relative;
+}
+
+.popup .close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #06D85F;
+  cursor: pointer;
+}

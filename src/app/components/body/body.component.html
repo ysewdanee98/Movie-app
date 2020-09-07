@@ -1,0 +1,14 @@
+<app-menu (newMenuEvent)="showSelected($event)"></app-menu>
+<div class="body">
+  {{selectedName}}
+
+  <div class = "cardContainer" *ngIf="selectedName == 'New Releases'">
+    <div class="card" *ngFor="let item of listNewReleases">
+      <div class="rating">{{ item.rating }}</div>
+      <div class="poster"><img src={{item.poster}} width="250px" height="325px"></div>
+      <div class="name">{{ item.name }}</div>
+    </div>
+  </div>
+
+</div>
+
