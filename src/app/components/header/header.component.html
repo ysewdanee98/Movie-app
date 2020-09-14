@@ -1,6 +1,10 @@
 <div class="header">
   <div class="buttonSettings" (click)="popUpToggle()"></div>
-  <h1 style="color: black;">Welcome</h1>
+  <div class="search-container">
+    <input type="text" class="searchTerm" placeholder="Search movies">
+    <div class="searchButton" (click)="operationSearch()"></div>
+ </div>
+ <h1 style="padding-left: 25px; color: black; text-align: left;">Movie Site</h1>
 </div>
 
 <div *ngIf="popup == true"><app-pop-up-setting [popUpStatus]=popup (newPopUpEvent)="popUpToggle()"></app-pop-up-setting></div>

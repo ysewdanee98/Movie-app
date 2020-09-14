@@ -1,16 +1,33 @@
-<app-menu (newMenuEvent)="showSelected($event)"></app-menu>
+<app-menu (newMenuEvent)="showSelected($event)" [dataGenres] = "getGenre()"></app-menu>
 <div class="body">
 
   <div class="bodyContainer">
     <p style="font-size:20px;">{{selectedName}}</p>
 
-    <div class = "cardContainer" *ngIf="selectedName == 'New Releases'">
-      <div class="card" *ngFor="let item of listNewReleases">
+    <div class = "cardContainer" *ngIf="selectedName == selectedName">
+
+      <!-- //Working
+      <div *ngFor="let product of dataMoviesJson">
+        {{product.originalTitle}}
+      </div> -->
+
+      <!-- {{getList()}} -->
+
+      <!-- //Working -->
+      <div class="card" *ngFor="let movie of getList()">
+        <div class="rating">{{ movie.imdbRating }}</div>
+        <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px"></div>
+        <div class="name">{{ movie.originalTitle }}</div>
+        <div class="genres">{{ movie.genres }}</div>
+      </div>
+
+      <!-- <div class="card" *ngFor="let item of listNewReleases">
         <div class="rating">{{ item.rating }}</div>
         <div class="poster"><img src={{item.poster}} width="250px" height="325px"></div>
         <div class="name">{{ item.name }}</div>
-      </div>
+      </div> -->
     </div>
+
   </div>
 
 

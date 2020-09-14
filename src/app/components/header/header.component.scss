@@ -3,17 +3,52 @@
   height: 100%;
   padding-top: 3px;
   padding-bottom: 3px;
-  text-align: center;
   background: red;
   font-size: 15px;
+
+  .buttonSettings {
+    background: url(/assets/settingsIcon.png);
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  .search-container {
+    width: 50%;
+    display: flex;
+    position: absolute;
+    left: 225px;
+    top: 50px;
+
+    .searchTerm {
+      width: 60%;
+      border: 2px solid black;
+      border-right: none;
+      padding: 5px;
+      height: 20px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .searchTerm:focus{
+      color: black;
+    }
+
+    .searchButton {
+      background:grey;
+      background-image: url(/assets/searchIcon.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 30px;
+      height: 30px;
+      border: 2px solid black;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+  }
 }
 
-.buttonSettings {
-  background: url(/assets/settingsIcon.png);
-  background-size: 100%;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  right: 15px;
-  cursor: pointer;
-}
+

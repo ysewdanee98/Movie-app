@@ -1,9 +1,15 @@
 <div class="left_height">
   <div class="vertical-menu">
-    <a [class.selected] = "nameSelected == 'New Releases'" href="#" (click)="chosen('New Releases')">New Releases<div1 *ngIf="nameSelected == 'New Releases'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
+    <!-- <a [class.selected] = "nameSelected == 'Crime'" href="#" (click)="chosen('Crime')">Crime<div1 *ngIf="nameSelected == 'Crime'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
     <a [class.selected] = "nameSelected == 'Trending'" href="#" (click)="chosen('Trending')">Trending<div1 *ngIf="nameSelected == 'Trending'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
     <a [class.selected] = "nameSelected == 'Coming Soon'" href="#" (click)="chosen('Coming Soon')">Coming Soon<div1 *ngIf="nameSelected == 'Coming Soon'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
     <a [class.selected] = "nameSelected == 'Favourites'" href="#" (click)="chosen('Favourites')">Favourites<div1 *ngIf="nameSelected == 'Favourites'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
-    <a [class.selected] = "nameSelected == 'Watch Later'" href="#" (click)="chosen('Watch Later')">Watch Later<div1 *ngIf="nameSelected == 'Watch Later'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
+    <a [class.selected] = "nameSelected == 'Watch Later'" href="#" (click)="chosen('Watch Later')">Watch Later<div1 *ngIf="nameSelected == 'Watch Later'"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a> -->
+
+    <!-- //Working -->
+    <div *ngFor="let genre of dataGenres">
+      <a [class.selected] = "nameSelected == genre" href="#" (click)="chosen(genre)">{{ genre }}<div1 *ngIf="nameSelected == genre"><img class="imageArrow" src="assets/arrowIcon.png"></div1></a>
+    </div>
+
   </div>
 </div>

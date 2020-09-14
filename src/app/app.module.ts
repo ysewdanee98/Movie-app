@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { BodyComponent } from './components/body/body.component';
 import { PopUpSettingComponent } from './components/pop-up-setting/pop-up-setting.component';
+import { MovieService } from './providers/movie.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,12 @@ import { PopUpSettingComponent } from './components/pop-up-setting/pop-up-settin
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    MovieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,4 +18,8 @@ export class HeaderComponent implements OnInit {
     this.popup = !this.popup;
   }
 
+  operationSearch(){
+    console.log("Search button clicked!")
+  }
+
 }
