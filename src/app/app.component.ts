@@ -12,7 +12,11 @@ export class AppComponent {
   // products: any = [];
   movies: any = [];
 
-  constructor(private service: MovieService) { }
+  searchWord: string;
+
+  constructor(private service: MovieService) {
+    this.searchWord = "";
+   }
 
   ngOnInit() {
     // this.service.getData().subscribe((data: any) => {
@@ -27,6 +31,11 @@ export class AppComponent {
       // console.log("Movies: "+this.movies.length);
     });
 
+  }
+
+  newSearch(newSearch: string){
+    this.searchWord = newSearch;
+    // console.log(newSearch);
   }
 
 }

@@ -16,10 +16,13 @@ export class BodyComponent implements OnInit {
   // items: Array<Item>;
   // @Input() dataTestJson: any;
 
-  movies: Array<Movie>;
+  // movies: Array<Movie>;
   @Input() dataMoviesJson: any;
 
-  constructor() { }
+  @Input() searchWord: string;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     // this.listNewReleases =
@@ -38,6 +41,7 @@ export class BodyComponent implements OnInit {
 
   showSelected(newMenu: string) {
     this.selectedName = newMenu;
+    this.searchWord = "";
   }
 
   getGenre(){
@@ -73,6 +77,26 @@ export class BodyComponent implements OnInit {
       if(entry.genres.includes(this.selectedName)){
         listArray.push(entry);
         // console.log(i++);
+      }
+    }
+    return listArray;
+  }
+
+  getSearchList(){
+    let listArray: Movie[] = [];
+    let title: string;
+    let searchingWord: string;
+    searchingWord = this.searchWord;
+    searchingWord = searchingWord.toLowerCase().trim();
+    if (searchingWord == "") {
+      //Do nothing
+    } else {
+      for (let entry of this.dataMoviesJson) {
+        title = entry.originalTitle;
+        title = title.toLowerCase().trim();
+        if(title.includes(searchingWord)){
+          listArray.push(entry);
+        }
       }
     }
     return listArray;

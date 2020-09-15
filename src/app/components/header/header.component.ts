@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,13 @@ export class HeaderComponent implements OnInit {
 
   popup: boolean;
 
-  constructor() { }
+  searchWord: string;
+  @Output() newSearchEvent = new EventEmitter<string>();
+
+
+  constructor() {
+    this.searchWord = "";
+  }
 
   ngOnInit(): void {
   }
@@ -19,7 +25,10 @@ export class HeaderComponent implements OnInit {
   }
 
   operationSearch(){
-    console.log("Search button clicked!")
+    // console.log("Search button clicked!");
+    // console.log(this.searchWord);
+    this.newSearchEvent.emit(this.searchWord);
+    this.searchWord = "";
   }
 
 }

@@ -1,5 +1,5 @@
-<app-header></app-header>
-<div class="bodyContainer"><app-body [dataMoviesJson] = "movies"></app-body></div>
+<app-header (newSearchEvent)="newSearch($event)"></app-header>
+<div class="bodyContainer"><app-body [dataMoviesJson] = "movies"  [searchWord] = "searchWord"></app-body></div>
 
 
 

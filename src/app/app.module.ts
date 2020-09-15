@@ -9,6 +9,7 @@ import { BodyComponent } from './components/body/body.component';
 import { PopUpSettingComponent } from './components/pop-up-setting/pop-up-setting.component';
 import { MovieService } from './providers/movie.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     MovieService

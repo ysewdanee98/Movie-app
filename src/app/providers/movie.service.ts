@@ -11,9 +11,9 @@ export class MovieService {
 
   }
 
-  getData(){
-    return this.http.get("../assets/test.JSON");
-  }
+  // getData(){
+  //   return this.http.get("../assets/test.JSON");
+  // }
 
   getMovieData(){
     return this.http.get("../../assets/movies.json");

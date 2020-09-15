@@ -1,7 +1,7 @@
 <div class="header">
   <div class="buttonSettings" (click)="popUpToggle()"></div>
   <div class="search-container">
-    <input type="text" class="searchTerm" placeholder="Search movies">
+    <input type="text" [(ngModel)]="searchWord" class="searchTerm"  placeholder="Search movies">
     <div class="searchButton" (click)="operationSearch()"></div>
  </div>
  <h1 style="padding-left: 25px; color: black; text-align: left;">Movie Site</h1>
