@@ -1,7 +1,7 @@
+import { Movie } from './../../dto/movie';
 import { Component, OnInit, Input } from '@angular/core';
 
-// export type Item = { id: number, name: string };
-export type Movie = { originalTitle: any, year: any, genres: any, releaseDate: any, storyline: any,  actors: any, imdbRating: any, posterurl: any};
+// export type Movie = { title: any, originalTitle: any, year: any, genres: any, releaseDate: any, storyline: any,  actors: any, imdbRating: any, posterurl: any};
 
 @Component({
   selector: 'app-body',
@@ -11,72 +11,44 @@ export type Movie = { originalTitle: any, year: any, genres: any, releaseDate: a
 export class BodyComponent implements OnInit {
 
   selectedName: string = "";
-  // listNewReleases: any[];
 
-  // items: Array<Item>;
-  // @Input() dataTestJson: any;
-
-  // movies: Array<Movie>;
   @Input() dataMoviesJson: any;
 
   @Input() searchWord: string;
 
   constructor() {
+    this.movieTitle = "";
+    this.ratingFilter = "All";
   }
 
   ngOnInit(): void {
-    // this.listNewReleases =
-    //   [{id: 0, name: 'The Wailing', rating: 7.9, poster: "/assets/The Wailing.jpg"},
-    //   {id: 1, name: 'Warcraft', rating: 8.1, poster: "/assets/Warcraft.jpg"},
-    //   {id: 2, name: 'The Space Between Us', rating: 6.8, poster: "/assets/The Space Between Us.jpg"},
-    //   {id: 3, name: 'The Witch', rating: 6.7, poster: "/assets/The Witch.jpg"},
-    //   {id: 4, name: 'The Shallows', rating: 7.1, poster: "/assets/The Shallows.jpg"},
-    //   {id: 5, name: 'X-Men Apocalypse', rating: 7.8, poster: "/assets/X-Men Apocalypse.jpg"},
-    //   {id: 6, name: 'Me Before You', rating: 5.9, poster: "/assets/Me Before You.jpg"},
-    //   {id: 7, name: 'Now You See Me 2', rating: 6.2, poster: "/assets/Now You See Me 2.jpg"},
-    //   {id: 8, name: 'The Fits', rating: 7.0, poster: "/assets/The Fits.jpg"},
-    //   {id: 9, name: 'Money Monster', rating: 6.8, poster: "/assets/Money Monster.jpg"}];
-
   }
 
   showSelected(newMenu: string) {
     this.selectedName = newMenu;
     this.searchWord = "";
+    this.movieTitle = "";
+    this.ratingFilter = "All";
   }
 
   getGenre(){
-
       let mergingGenreArray: string[] = [];
       let uniqueGenreArray: string[] = [];
-
-      const sizeArray = this.dataMoviesJson.length;
-      // console.log("Size is:"+ sizeArray);
-
       for (let entry of this.dataMoviesJson) {
-        // console.log(entry.genres);
         const genreArray: string[] = entry.genres;
         mergingGenreArray = mergingGenreArray.concat(genreArray);
       }
-
       uniqueGenreArray = mergingGenreArray.filter(function(elem, index, self) {
         return index === self.indexOf(elem);
       })
-
-      // const sizeUnquie = uniqueGenreArray.length;
-      // console.log("Genre Size is:"+ sizeUnquie);
-      // console.log(uniqueGenreArray);
-
       return uniqueGenreArray;
   }
 
   getList(){
     let listArray: Movie[] = [];
-    // let i:number = 0;
     for (let entry of this.dataMoviesJson) {
-      // console.log(entry.genres);
       if(entry.genres.includes(this.selectedName)){
         listArray.push(entry);
-        // console.log(i++);
       }
     }
     return listArray;
@@ -85,6 +57,7 @@ export class BodyComponent implements OnInit {
   getSearchList(){
     let listArray: Movie[] = [];
     let title: string;
+    let anoTitle: string;
     let searchingWord: string;
     searchingWord = this.searchWord;
     searchingWord = searchingWord.toLowerCase().trim();
@@ -93,8 +66,12 @@ export class BodyComponent implements OnInit {
     } else {
       for (let entry of this.dataMoviesJson) {
         title = entry.originalTitle;
+        anoTitle = entry.title;
         title = title.toLowerCase().trim();
+        anoTitle = anoTitle.toLowerCase().trim();
         if(title.includes(searchingWord)){
+          listArray.push(entry);
+        }else if(anoTitle.includes(searchingWord)){
           listArray.push(entry);
         }
       }
@@ -102,6 +79,64 @@ export class BodyComponent implements OnInit {
     return listArray;
   }
 
+  ratingFilter: string;
 
+  newRating(value: string){
+    this.ratingFilter = value;
+  }
+
+  getFilterList(option: string){
+    let listArray: Movie[] = [];
+    let optionArray: Movie[] = [];
+    if (option == "General") {
+      optionArray = this.getList();
+    } else if (option == "Search") {
+      optionArray = this.getSearchList();
+    }
+    if (this.ratingFilter == "All") {
+      for (let entry of optionArray) {
+        listArray.push(entry);
+      }
+    } else if (this.ratingFilter == ">= 8.5") {
+      for (let entry of optionArray) {
+        listArray = optionArray.filter(m => m.imdbRating >= 8.5 );
+      }
+    } else if (this.ratingFilter == "< 8.5") {
+      for (let entry of optionArray) {
+        listArray = optionArray.filter(m => m.imdbRating < 8.5 );
+      }
+    }
+    let sortedArray: Movie[] = listArray.sort((n1,n2) => {
+      if (n1.imdbRating < n2.imdbRating) {
+          return 1;
+      }
+      if (n1.imdbRating > n2.imdbRating) {
+          return -1;
+      }
+      return 0;
+    });
+    return sortedArray;
+  }
+
+  movieTitle: string;
+  releaseDate: string;
+
+  movieDetails(movieTitle: string, relDate: string){
+    this.movieTitle = movieTitle;
+    this.releaseDate = relDate;
+  }
+
+  getMovieDetails(){
+    let detailMovie: Movie[] = [];
+    for (let entry of this.dataMoviesJson) {
+      detailMovie = this.dataMoviesJson.filter(m => m.title == this.movieTitle && m.releaseDate == this.releaseDate);
+    }
+    console.log(detailMovie);
+    return detailMovie;
+  }
+
+  updateMovieTitle(){
+    this.movieTitle = "";
+  }
 
 }

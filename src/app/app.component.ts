@@ -9,9 +9,7 @@ import { MovieService } from './providers/movie.service';
 export class AppComponent {
   title = 'movie-app';
 
-  // products: any = [];
   movies: any = [];
-
   searchWord: string;
 
   constructor(private service: MovieService) {
@@ -19,23 +17,14 @@ export class AppComponent {
    }
 
   ngOnInit() {
-    // this.service.getData().subscribe((data: any) => {
-    //   console.log(data);
-    //   this.products = data;
-    //   console.log(this.products.length);
-    // });
-
     this.service.getMovieData().subscribe((dataM: any) => {
-      // console.log(data);
       this.movies = dataM;
-      // console.log("Movies: "+this.movies.length);
     });
 
   }
 
   newSearch(newSearch: string){
     this.searchWord = newSearch;
-    // console.log(newSearch);
   }
 
 }

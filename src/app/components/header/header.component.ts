@@ -25,8 +25,6 @@ export class HeaderComponent implements OnInit {
   }
 
   operationSearch(){
-    // console.log("Search button clicked!");
-    // console.log(this.searchWord);
     this.newSearchEvent.emit(this.searchWord);
     this.searchWord = "";
   }

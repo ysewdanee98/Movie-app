@@ -10,6 +10,7 @@ import { PopUpSettingComponent } from './components/pop-up-setting/pop-up-settin
 import { MovieService } from './providers/movie.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FilterRatingComponent } from './components/filter-rating/filter-rating.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     MenuComponent,
     BodyComponent,
-    PopUpSettingComponent
+    PopUpSettingComponent,
+    FilterRatingComponent
   ],
   imports: [
     BrowserModule,

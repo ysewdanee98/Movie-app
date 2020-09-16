@@ -36,6 +36,7 @@
 
           .poster {
             padding-top: 10px;
+            cursor: pointer;
           }
 
           .name {
@@ -56,6 +57,36 @@
             font-size: 15px;
           }
 
+        }
+
+      }
+
+      .filterRating {
+        height: 75px;
+        width: 100%;
+        // background: rgb(30, 30, 30);
+        position: relative;
+      }
+
+
+      .movieDetails {
+
+        .title {
+          padding-top: 15px;
+          padding-left: 10px;
+          font-size: 20px;
+        }
+
+        .ratingReleaseDateYearGenreActors {
+          padding-top: 5px;
+          padding-left: 10px;
+          font-size: 18px;
+        }
+
+        .storyline{
+          padding-top: 5px;
+          padding-left: 10px;
+          font-size: 18px;
         }
 
       }

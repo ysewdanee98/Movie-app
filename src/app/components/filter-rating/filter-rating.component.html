@@ -1,0 +1,7 @@
+<div class="positionButton">Rating Filter:
+<input type="button" class="buttonRating" [class.selected]="btnSelected == 'All'" name="btnRating" value="All" (click)="getValue('All')">
+<input type="button" class="buttonRating" [class.selected]="btnSelected == '>= 8.5'" name="btnRating" value=">= 8.5" (click)="getValue('>= 8.5')">
+<input type="button" class="buttonRating" [class.selected]="btnSelected == '< 8.5'" name="btnRating" value="< 8.5" (click)="getValue('< 8.5')">
+</div>
+
+{{update()}}
