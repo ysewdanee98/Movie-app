@@ -73,6 +73,14 @@ export class Movie {
 		return this.imdbRating;
 	}
 
+      /**
+     * Getter $posterurl
+     * @return {any}
+     */
+	public get $posterurl(): any {
+		return this.posterurl;
+  }
+  
     /**
      * Setter $title
      * @param {any} value
@@ -138,20 +146,11 @@ export class Movie {
   }
 
     /**
-     * Getter $posterurl
-     * @return {any}
-     */
-	public get $posterurl(): any {
-		return this.posterurl;
-	}
-
-    /**
      * Setter $posterurl
      * @param {any} value
      */
 	public set $posterurl(value: any) {
 		this.posterurl = value;
 	}
-
 
 }

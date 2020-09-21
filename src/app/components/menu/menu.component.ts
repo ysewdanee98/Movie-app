@@ -1,3 +1,5 @@
+import { Movie } from './../../dto/movie';
+import { MovieService } from './../../providers/movie.service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
@@ -7,23 +9,44 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  nameSelected: string = "";
+  @Input() genreSelected: string;
+  @Input() isGenreSelected: boolean;
 
-  @Output() newMenuEvent = new EventEmitter <string>();
+  movieList: Movie[] = [];
 
-  @Input() dataGenres: string[];
-
-  constructor() {
-    this.nameSelected = "";
+  constructor(private service: MovieService) {
+    this.genreSelected = "";
+    this.isGenreSelected = false;
   }
 
   ngOnInit(): void {
-
+    //Getting data from JSON and store in movies array
+    this.service.getMovieData().subscribe((dataM: any) => {
+      this.movieList = dataM;
+    });
   }
 
-  chosen(clicked: string){
-    this.nameSelected = clicked;
-    this.newMenuEvent.emit(this.nameSelected);
+  //Get distinct genre
+  getGenre(){
+    let mergingGenreArray: string[] = [];
+    let uniqueGenreArray: string[] = [];
+    for (let entry of this.movieList) {
+      const genreArray: string[] = entry.genres;
+      mergingGenreArray = mergingGenreArray.concat(genreArray);
+    }
+    uniqueGenreArray = mergingGenreArray.filter(function(elem, index, self) {
+      return index === self.indexOf(elem);
+    })
+    return uniqueGenreArray;
+  }
+
+  @Output() newMenuEvent = new EventEmitter <{genreSelected: string, isGenreSelected: boolean}>();
+
+  chosen(genreClicked: string){
+    // console.log(genreClicked);
+    this.genreSelected = genreClicked;
+    this.isGenreSelected = true;
+    this.newMenuEvent.emit({genreSelected: this.genreSelected, isGenreSelected: this.isGenreSelected});
   }
 
 }

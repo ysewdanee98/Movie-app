@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MovieService } from './providers/movie.service';
 
 @Component({
   selector: 'app-root',
@@ -9,22 +8,27 @@ import { MovieService } from './providers/movie.service';
 export class AppComponent {
   title = 'movie-app';
 
-  movies: any = [];
-  searchWord: string;
-
-  constructor(private service: MovieService) {
-    this.searchWord = "";
-   }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.service.getMovieData().subscribe((dataM: any) => {
-      this.movies = dataM;
-    });
 
   }
 
-  newSearch(newSearch: string){
-    this.searchWord = newSearch;
+  public HeaderStatus = {searchMovie: "", isSearch: false, apiSelected: "", isAPISelected: false};
+  searchMovie: string;
+  isSearch: boolean;
+  apiSelected: string;
+  isAPISelected: boolean;
+
+  changeHeader(data){
+    this.HeaderStatus = data;
+    this.searchMovie = this.HeaderStatus.searchMovie;
+    this.isSearch = this.HeaderStatus.isSearch;
+    // console.log(this.isSearch);
+    this.apiSelected = this.HeaderStatus.apiSelected;
+    this.isAPISelected = this.HeaderStatus.isAPISelected;
+    console.log(this.apiSelected);
   }
 
 }

@@ -1,2 +1,4 @@
-<app-header (newSearchEvent)="newSearch($event)"></app-header>
-<div class="bodyContainer"><app-body [dataMoviesJson] = "movies"  [searchWord] = "searchWord"></app-body></div>
+<app-header (newHeaderEvent)="changeHeader($event)" [isSearch]="isSearch"></app-header>
+<div class="bodyContainer">
+  <app-body [searchMovie]="searchMovie" [isSearchSelected]="isSearch" [apiSelected]="apiSelected" [isAPISelected]="isAPISelected"></app-body>
+</div>

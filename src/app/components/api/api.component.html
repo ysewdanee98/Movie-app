@@ -1,0 +1,22 @@
+<div style="font-size:20px;">{{apiSelected}}</div>
+
+
+<div *ngIf="apiSelected == 'Popular'">
+  <div class = "cardContainer">
+    <div class="card" *ngFor="let movie of getPopularMovies()">
+      <div class="rating">{{ movie.imdbRating }}</div>
+      <div class="poster" [ngStyle]="getBackground(movie.posterurl)"></div>
+      <div class="name">{{ movie.title }}</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="apiSelected == 'Upcoming'">
+  <div class = "cardContainer">
+    <div class="card" *ngFor="let movie of getUpcomingMovies()">
+      <div class="rating">{{ movie.imdbRating }}</div>
+      <div [ngStyle]="getBackground(movie.posterurl)"></div>
+      <div class="name">{{ movie.title }}</div>
+    </div>
+  </div>
+</div>

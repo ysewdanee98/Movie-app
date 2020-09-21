@@ -1,0 +1,38 @@
+.cardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 305px;
+    height: 400px;
+    background: transparent;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    padding-top: 10px;
+    // background: rgb(141, 141, 0);
+
+    .name {
+      font-size: 22px;
+      font-weight: 250;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .rating {
+      font-size: 18px;
+      background: rgb(141, 141, 0);
+      position: absolute;
+      padding: 3px;
+    }
+
+    .genres {
+      font-size: 15px;
+    }
+
+  }
+
+}

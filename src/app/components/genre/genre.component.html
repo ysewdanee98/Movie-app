@@ -1,0 +1,29 @@
+<div style="font-size:20px;">{{genreSelected}}</div>
+
+<div class="filterRating"><app-filter-rating [ratingSelected]="ratingSelected" [listMoviesNotFiltered]="getListMovieOfGenre()" (newRatingEvent)="changeRating($event)"></app-filter-rating></div>
+<div *ngIf="ratingSelected=='All'; then filterAll else filterNotAll">
+</div>
+
+<ng-template #filterAll>
+  <div class = "cardContainer">
+    <div class="card" *ngFor='let movie of getListMovieOfGenre()'>
+      <div class="rating">{{ movie.imdbRating }}</div>
+      <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div>
+      <div class="name" *ngIf="movie.originalTitle == ''">{{ movie.title }}</div>
+      <div class="name">{{ movie.originalTitle }}</div>
+      <div class="genres">{{ movie.genres }}</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #filterNotAll>
+  <div class = "cardContainer">
+    <div class="card" *ngFor='let movie of movieByRatingList'>
+      <div class="rating">{{ movie.imdbRating }}</div>
+      <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div>
+      <div class="name" *ngIf="movie.originalTitle == ''">{{ movie.title }}</div>
+      <div class="name">{{ movie.originalTitle }}</div>
+      <div class="genres">{{ movie.genres }}</div>
+    </div>
+  </div>
+</ng-template>

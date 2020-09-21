@@ -11,6 +11,10 @@ import { MovieService } from './providers/movie.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FilterRatingComponent } from './components/filter-rating/filter-rating.component';
+import { GenreComponent } from './components/genre/genre.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { SearchComponent } from './components/search/search.component';
+import { ApiComponent } from './components/api/api.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { FilterRatingComponent } from './components/filter-rating/filter-rating.
     MenuComponent,
     BodyComponent,
     PopUpSettingComponent,
-    FilterRatingComponent
+    FilterRatingComponent,
+    GenreComponent,
+    MovieDetailsComponent,
+    SearchComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,

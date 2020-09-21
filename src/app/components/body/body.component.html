@@ -1,65 +1,26 @@
-<app-menu (newMenuEvent)="showSelected($event)" [dataGenres] = "getGenre()"></app-menu>
+<app-menu (newMenuEvent)="changeGenre($event)" [genreSelected]="genreSelected" [isGenreSelected]="isGenreSelected"></app-menu>
+
 <div class="body">
   <div class="bodyContainer">
 
-    <div *ngIf="selectedName == selectedName && searchWord == '' && movieTitle == ''">
-      <div style="font-size:20px;">{{selectedName}}</div>
-      <div class="filterRating" *ngIf="getList().length != 0"><app-filter-rating [ratingFilter]="ratingFilter" (newRatingEvent)="newRating($event)"></app-filter-rating></div>
-      <div class = "cardContainer">
-        <div class="card" *ngFor="let movie of getFilterList('General')">
-          <div class="rating">{{ movie.imdbRating }}</div>
-          <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div>
-          <div class="name" *ngIf="movie.originalTitle == ''">{{ movie.title }}</div>
-          <div class="name">{{ movie.originalTitle }}</div>
-          <div class="genres">{{ movie.genres }}</div>
-        </div>
-      </div>
+    <div *ngIf="isGenreSelected==true">
+      <app-genre [genreSelected]="genreSelected" (newMovieDetailsEvent)="changeMovieDetails($event)"></app-genre>
     </div>
 
-    <div *ngIf="searchWord != '' && movieTitle == ''">
-      <div style="font-size:20px;">Search '{{searchWord}}' results:</div>
-      <div class="filterRating" *ngIf="getSearchList().length != 0"><app-filter-rating [ratingFilter]="ratingFilter" (newRatingEvent)="newRating($event)"></app-filter-rating></div>
-      <div *ngIf="getSearchList().length == 0">
-        <p style="font-size:20px;">Not found.</p>
-      </div>
-      <div class = "cardContainer">
-        <div class="card" *ngFor="let movie of getFilterList('Search')">
-          <div class="rating">{{ movie.imdbRating }}</div>
-          <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div>
-          <div class="name" *ngIf="movie.originalTitle == ''">{{ movie.title }}</div>
-          <div class="name">{{ movie.originalTitle }}</div>
-          <div class="genres">{{ movie.genres }}</div>
-        </div>
-      </div>
+    <div *ngIf="isMovieDetailsSelected==true">
+      <app-movie-details [movieTitle]="movieTitle" [releaseDate]="releaseDate"></app-movie-details>
     </div>
 
-    <div class= "movieDetails" *ngIf="movieTitle != ''">
-      <div style="font-size:30px;">Movie Details:</div>
-      <div *ngFor="let movie of getMovieDetails()">
-        <div class="title" *ngIf="movie.originalTitle == ''">Movie name: {{ movie.title }}</div>
-        <div class="title" *ngIf="movie.originalTitle != ''">Movie name: {{ movie.originalTitle }}</div>
-        <img src={{movie.posterurl}} width="450px" height="600px" style="float:right; padding: 15px; position: relative;" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';">
-        <div class="ratingReleaseDateYearGenreActors">
-          <p>Year: {{ movie.year }}</p>
-          <p>Rating: {{ movie.imdbRating }}</p>
-          <p>Release date: {{ movie.releaseDate }}</p>
-          <div style="font-size:20px;">Genres:</div>
-          <div *ngFor="let genre of movie.genres">
-            {{ genre }}
-          </div>
-          <br>
-          <div style="font-size:20px;">Actors:</div>
-          <div *ngFor="let actor of movie.actors">
-            {{ actor }}
-          </div>
-        </div>
-        <br>
-        <div class="storyline">
-          Storyline:
-          <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ movie.storyline }}
-        </div>
-      </div>
-      {{updateMovieTitle()}}
+    <!-- {{searchMovie}} {{isSearchSelected}} -->
+    <div *ngIf="isSearchSelected==true">
+      <app-search [searchMovie]="searchMovie" (newMovieDetailsEvent)="changeMovieDetails($event)"></app-search>
+      {{updateSearch()}}
+    </div>
+
+    <!-- {{isAPISelected}} -->
+    <div *ngIf="isAPISelected==true">
+      <app-api [apiSelected]="apiSelected"></app-api>
+      {{updateAPI()}}
     </div>
 
   </div>

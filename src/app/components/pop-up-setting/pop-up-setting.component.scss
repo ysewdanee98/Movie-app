@@ -7,27 +7,27 @@
 //   background: rgba(0, 0, 0, 0.5);
 // }
 
-.popup {
+.popUp {
   // margin: 100px auto;
-  top: 50px;
+  top: 90px;
   right: 15px;
   padding: 5px;
   background: #fff;
   border-radius: 5px;
   width: 10%;
   position: absolute;
-}
 
-.popup .close {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-size: 30px;
-  font-weight: bold;
-  color: #333;
-}
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+  }
 
-.popup .close:hover {
-  color: #06D85F;
-  cursor: pointer;
+  .close:hover {
+    color: #06D85F;
+    cursor: pointer;
+  }
 }

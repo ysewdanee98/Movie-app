@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PopUpSettingComponent implements OnInit {
 
-  @Input() popUpStatus: boolean;
+  @Input() isPopUpStatus: boolean;
   @Output() newPopUpEvent = new EventEmitter<boolean>();
 
   constructor() { }
@@ -15,9 +15,10 @@ export class PopUpSettingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ChangePopUpStatus(){
-    this.popUpStatus = false;
-    this.newPopUpEvent.emit(this.popUpStatus);
+  changePopUpStatus(){
+    this.isPopUpStatus = false;
+    this.newPopUpEvent.emit(this.isPopUpStatus);
+    // console.log("Clicked on X");
   }
 
 }
