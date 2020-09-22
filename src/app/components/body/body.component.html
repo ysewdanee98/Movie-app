@@ -7,9 +7,9 @@
       <app-genre [genreSelected]="genreSelected" (newMovieDetailsEvent)="changeMovieDetails($event)"></app-genre>
     </div>
 
-    <div *ngIf="isMovieDetailsSelected==true">
+    <!-- <div *ngIf="isMovieDetailsSelected==true">
       <app-movie-details [movieTitle]="movieTitle" [releaseDate]="releaseDate"></app-movie-details>
-    </div>
+    </div> -->
 
     <!-- {{searchMovie}} {{isSearchSelected}} -->
     <div *ngIf="isSearchSelected==true">
@@ -22,6 +22,8 @@
       <app-api [apiSelected]="apiSelected"></app-api>
       {{updateAPI()}}
     </div>
+
+    <router-outlet></router-outlet>
 
   </div>
 </div>

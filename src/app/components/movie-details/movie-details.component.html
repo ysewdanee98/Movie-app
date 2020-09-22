@@ -1,6 +1,35 @@
-<div class= "movieDetails">
+<!-- <div class= "movieDetails">
   <div style="font-size:30px;">Movie Details:</div>
   <div *ngFor="let movie of getMovieDetails()">
+    <div class="title" *ngIf="movie.originalTitle == ''">Movie name: {{ movie.title }}</div>
+    <div class="title" *ngIf="movie.originalTitle != ''">Movie name: {{ movie.originalTitle }}</div>
+    <img src={{movie.posterurl}} width="450px" height="600px" style="float:right; padding: 15px; position: relative;" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';">
+    <div class="ratingReleaseDateYearGenreActors">
+      <p>Year: {{ movie.year }}</p>
+      <p>Rating: {{ movie.imdbRating }}</p>
+      <p>Release date: {{ movie.releaseDate }}</p>
+      <div style="font-size:20px;">Genres:</div>
+      <div *ngFor="let genre of movie.genres">
+        {{ genre }}
+      </div>
+      <br>
+      <div style="font-size:20px;">Actors:</div>
+      <div *ngFor="let actor of movie.actors">
+        {{ actor }}
+      </div>
+    </div>
+    <br>
+    <div class="storyline">
+      Storyline:
+      <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ movie.storyline }}
+    </div>
+  </div>
+</div> -->
+
+<!-- Using router-outlet -->
+<div class= "movieDetails">
+  <div style="font-size:30px;">Movie Details:</div>
+  <div *ngFor="let movie of getDetails()">
     <div class="title" *ngIf="movie.originalTitle == ''">Movie name: {{ movie.title }}</div>
     <div class="title" *ngIf="movie.originalTitle != ''">Movie name: {{ movie.originalTitle }}</div>
     <img src={{movie.posterurl}} width="450px" height="600px" style="float:right; padding: 15px; position: relative;" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';">

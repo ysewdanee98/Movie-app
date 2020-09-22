@@ -29,9 +29,9 @@ export class MovieService {
     return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=fed69657ba4cc6e1078d2a6a95f51c8c`)
       .pipe(map((data: any) => {
       if (data != null) {
-        console.log(data);
+        // console.log(data);
         data.results.forEach(element => {
-          console.log(element);
+          // console.log(element);
           const movie: Movie = new Movie();
           movie.title = element.original_title;
           movie.imdbRating = element.vote_average;
@@ -48,7 +48,7 @@ export class MovieService {
       .pipe(map((data: any) => {
       if (data != null) {
         data.results.forEach(element => {
-          console.log(element);
+          // console.log(element);
           const movie: Movie = new Movie();
           movie.title = element.original_title;
           movie.imdbRating = element.vote_average;

@@ -19,12 +19,14 @@ export class GenreComponent implements OnInit {
     this.movieTitle = "";
     this.releaseDate = "";
     this.isMovieDetailsSelected = false;
+    this.hideGenre = false;
   }
 
   ngOnInit(): void {
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
     });
+    this.hideGenre = false;
   }
 
   oldGenre: string = "";
@@ -49,10 +51,10 @@ export class GenreComponent implements OnInit {
   @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
 
   movieDetails(movieTitle: string, relDate: string){
-    this.movieTitle = movieTitle;
-    this.releaseDate = relDate;
-    this.isMovieDetailsSelected = true;
-    this.newMovieDetailsEvent.emit({movieTitle: this.movieTitle, releaseDate: this.releaseDate, isMovieDetailsSelected: this.isMovieDetailsSelected});
+    // this.movieTitle = movieTitle;
+    // this.releaseDate = relDate;
+    // this.isMovieDetailsSelected = true;
+    // this.newMovieDetailsEvent.emit({movieTitle: this.movieTitle, releaseDate: this.releaseDate, isMovieDetailsSelected: this.isMovieDetailsSelected});
     // console.log(movieTitle+relDate);
   }
 
@@ -65,6 +67,12 @@ export class GenreComponent implements OnInit {
     this.ratingSelected = this.RatingStatus.ratingSelected;
     this.movieByRatingList = this.RatingStatus.movieByRatingList;
     console.log(this.ratingSelected);
+  }
+
+  hideGenre: boolean;
+
+  hide(){
+    this.hideGenre = true;
   }
 
 }

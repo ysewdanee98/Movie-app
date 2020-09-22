@@ -10,7 +10,7 @@ export class BodyComponent implements OnInit {
 
   constructor(private service: MovieService) {
     this.isGenreSelected = false;
-    this.isMovieDetailsSelected = false;
+    // this.isMovieDetailsSelected = false;
     this.isSearchSelected = false;
     this.isAPISelected = false;
   }
@@ -27,7 +27,7 @@ export class BodyComponent implements OnInit {
     this.genreSelected = this.GenreStatus.genreSelected;
     this.isGenreSelected = this.GenreStatus.isGenreSelected;
     console.log(this.GenreStatus.genreSelected);
-    this.isMovieDetailsSelected = false;
+    // this.isMovieDetailsSelected = false;
     this.isSearchSelected = false;
     this.isAPISelected = false;
   }
@@ -38,14 +38,14 @@ export class BodyComponent implements OnInit {
   isMovieDetailsSelected: boolean;
 
   changeMovieDetails(data){
-    this.MovieDetailsStatus = data;
-    this.movieTitle = this.MovieDetailsStatus.movieTitle;
-    this.releaseDate = this.MovieDetailsStatus.releaseDate;
-    this.isMovieDetailsSelected = this.MovieDetailsStatus.isMovieDetailsSelected;
-    console.log(this.MovieDetailsStatus.movieTitle);
-    this.isGenreSelected = false;
-    this.isSearchSelected = false;
-    this.isAPISelected = false;
+    // this.MovieDetailsStatus = data;
+    // this.movieTitle = this.MovieDetailsStatus.movieTitle;
+    // this.releaseDate = this.MovieDetailsStatus.releaseDate;
+    // this.isMovieDetailsSelected = this.MovieDetailsStatus.isMovieDetailsSelected;
+    // console.log(this.MovieDetailsStatus.movieTitle);
+    // this.isGenreSelected = false;
+    // this.isSearchSelected = false;
+    // this.isAPISelected = false;
   }
 
   @Input() searchMovie: string;
@@ -53,7 +53,7 @@ export class BodyComponent implements OnInit {
 
   updateSearch(){
     this.isGenreSelected = false;
-    this.isMovieDetailsSelected = false;
+    // this.isMovieDetailsSelected = false;
     this.isAPISelected = false;
   }
 
@@ -63,7 +63,7 @@ export class BodyComponent implements OnInit {
   updateAPI(){
     // console.log(this.apiSelected);
     this.isGenreSelected = false;
-    this.isMovieDetailsSelected = false;
+    // this.isMovieDetailsSelected = false;
     this.isSearchSelected = false;
   }
 
