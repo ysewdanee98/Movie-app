@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Movie } from './../../dto/movie';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MovieService } from '../../providers/movie.service';
@@ -15,7 +16,7 @@ export class GenreComponent implements OnInit {
   movieTitle: string;
   releaseDate: string;
 
-  constructor(private service: MovieService) {
+  constructor(private service: MovieService, private route: ActivatedRoute) {
     this.movieTitle = "";
     this.releaseDate = "";
     this.isMovieDetailsSelected = false;
@@ -27,6 +28,10 @@ export class GenreComponent implements OnInit {
       this.movieList = dataM;
     });
     this.hideGenre = false;
+    this.route.paramMap.subscribe(params => {
+      // console.log(params.get('title'));
+      this.genreSelected = params.get('genre');
+    });
   }
 
   oldGenre: string = "";

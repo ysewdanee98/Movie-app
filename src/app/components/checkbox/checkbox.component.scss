@@ -1,0 +1,25 @@
+.checkbox {
+  display: flex;
+  margin-left: 10px;
+
+  .box {
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 1px solid palegreen;
+    cursor: pointer;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+    margin-right: 5px;
+  }
+
+  &.checked {
+    .box {
+      background: palegreen url("./../../../assets/check-mark.svg") no-repeat center center;
+      width: 16px;
+      height: 16px;
+      background-size: 15px;
+      transition: all 300ms ease-in-out;
+    }
+  }
+}

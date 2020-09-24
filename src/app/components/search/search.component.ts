@@ -1,6 +1,7 @@
 import { MovieService } from './../../providers/movie.service';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { Movie } from 'src/app/dto/movie';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,12 +12,12 @@ export class SearchComponent implements OnInit {
 
   movieList: Movie[] = [];
 
-  movieTitle: string;
-  releaseDate: string;
+  // movieTitle: string;
+  // releaseDate: string;
 
-  constructor(private service: MovieService) {
-    this.movieTitle = "";
-    this.releaseDate = "";
+  constructor(private service: MovieService, private route: ActivatedRoute) {
+    // this.movieTitle = "";
+    // this.releaseDate = "";
     this.isMovieDetailsSelected = false;
   }
 
@@ -24,10 +25,15 @@ export class SearchComponent implements OnInit {
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
     });
+    this.route.paramMap.subscribe(params => {
+      // console.log(params.get('title'));
+      this.searchMovie = params.get('title');
+    });
   }
 
-  @Input() searchMovie: string;
-  @Input() isSearched: boolean;
+  // @Input() searchMovie: string;
+  searchMovie: string;
+  // @Input() isSearched: boolean;
 
   oldSearch: string = "";
   getSearchList(){
@@ -64,10 +70,10 @@ export class SearchComponent implements OnInit {
   @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
 
   movieDetails(movieTitle: string, relDate: string){
-    this.movieTitle = movieTitle;
-    this.releaseDate = relDate;
-    this.isMovieDetailsSelected = true;
-    this.newMovieDetailsEvent.emit({movieTitle: this.movieTitle, releaseDate: this.releaseDate, isMovieDetailsSelected: this.isMovieDetailsSelected});
+    // this.movieTitle = movieTitle;
+    // this.releaseDate = relDate;
+    // this.isMovieDetailsSelected = true;
+    // this.newMovieDetailsEvent.emit({movieTitle: this.movieTitle, releaseDate: this.releaseDate, isMovieDetailsSelected: this.isMovieDetailsSelected});
     // console.log(movieTitle+relDate);
   }
 

@@ -1,11 +1,12 @@
-<app-menu (newMenuEvent)="changeGenre($event)" [genreSelected]="genreSelected" [isGenreSelected]="isGenreSelected"></app-menu>
+<!-- <app-menu (newMenuEvent)="changeGenre($event)" [genreSelected]="genreSelected" [isGenreSelected]="isGenreSelected"></app-menu> -->
+<app-menu></app-menu>
 
 <div class="body">
   <div class="bodyContainer">
 
-    <div *ngIf="isGenreSelected==true">
+    <!-- <div *ngIf="isGenreSelected==true">
       <app-genre [genreSelected]="genreSelected" (newMovieDetailsEvent)="changeMovieDetails($event)"></app-genre>
-    </div>
+    </div> -->
 
     <!-- <div *ngIf="isMovieDetailsSelected==true">
       <app-movie-details [movieTitle]="movieTitle" [releaseDate]="releaseDate"></app-movie-details>
@@ -23,7 +24,7 @@
       {{updateAPI()}}
     </div>
 
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet> -->
 
   </div>
 </div>
