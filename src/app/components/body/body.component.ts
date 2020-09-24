@@ -9,33 +9,33 @@ import { MovieService } from '../../providers/movie.service';
 export class BodyComponent implements OnInit {
 
   constructor(private service: MovieService) {
-    this.isGenreSelected = false;
+    // this.isGenreSelected = false;
     // this.isMovieDetailsSelected = false;
-    this.isSearchSelected = false;
-    this.isAPISelected = false;
+    // this.isSearchSelected = false;
+    // this.isAPISelected = false;
   }
 
   ngOnInit(): void {
   }
 
-  public GenreStatus = {genreSelected: "", isGenreSelected: false};
-  genreSelected: string;
-  isGenreSelected: boolean;
+  // public GenreStatus = {genreSelected: "", isGenreSelected: false};
+  // genreSelected: string;
+  // isGenreSelected: boolean;
 
   changeGenre(data){
-    this.GenreStatus = data;
-    this.genreSelected = this.GenreStatus.genreSelected;
-    this.isGenreSelected = this.GenreStatus.isGenreSelected;
-    console.log(this.GenreStatus.genreSelected);
+    // this.GenreStatus = data;
+    // this.genreSelected = this.GenreStatus.genreSelected;
+    // this.isGenreSelected = this.GenreStatus.isGenreSelected;
+    // console.log(this.GenreStatus.genreSelected);
     // this.isMovieDetailsSelected = false;
-    this.isSearchSelected = false;
-    this.isAPISelected = false;
+    // this.isSearchSelected = false;
+    // this.isAPISelected = false;
   }
 
-  public MovieDetailsStatus = {movieTitle: "", releaseDate: "", isMovieDetailsSelected: false};
-  movieTitle: string;
-  releaseDate: string;
-  isMovieDetailsSelected: boolean;
+  // public MovieDetailsStatus = {movieTitle: "", releaseDate: "", isMovieDetailsSelected: false};
+  // movieTitle: string;
+  // releaseDate: string;
+  // isMovieDetailsSelected: boolean;
 
   changeMovieDetails(data){
     // this.MovieDetailsStatus = data;
@@ -48,13 +48,13 @@ export class BodyComponent implements OnInit {
     // this.isAPISelected = false;
   }
 
-  @Input() searchMovie: string;
-  @Input() isSearchSelected: boolean;
+  // @Input() searchMovie: string;
+  // @Input() isSearchSelected: boolean;
 
   updateSearch(){
-    this.isGenreSelected = false;
+    // this.isGenreSelected = false;
     // this.isMovieDetailsSelected = false;
-    this.isAPISelected = false;
+    // this.isAPISelected = false;
   }
 
   @Input() apiSelected: string;
@@ -62,9 +62,9 @@ export class BodyComponent implements OnInit {
 
   updateAPI(){
     // console.log(this.apiSelected);
-    this.isGenreSelected = false;
+    // this.isGenreSelected = false;
     // this.isMovieDetailsSelected = false;
-    this.isSearchSelected = false;
+    // this.isSearchSelected = false;
   }
 
 }

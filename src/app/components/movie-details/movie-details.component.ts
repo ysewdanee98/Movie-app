@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  @Input() movieTitle: string;
-  @Input() releaseDate: string;
+  // @Input() movieTitle: string;
+  // @Input() releaseDate: string;
 
   movieList: Movie[] = [];
   detailsMovie: Movie[] = [];

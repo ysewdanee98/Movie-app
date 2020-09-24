@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   constructor(private service: MovieService, private route: ActivatedRoute) {
     // this.movieTitle = "";
     // this.releaseDate = "";
-    this.isMovieDetailsSelected = false;
+    // this.isMovieDetailsSelected = false;
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
     });
     this.route.paramMap.subscribe(params => {
       // console.log(params.get('title'));
-      this.searchMovie = params.get('title');
+      this.searchMovie = params.get('searchText');
     });
   }
 
@@ -66,7 +66,7 @@ export class SearchComponent implements OnInit {
     return listSearched;
   }
 
-  @Input() isMovieDetailsSelected: boolean;
+  // @Input() isMovieDetailsSelected: boolean;
   @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
 
   movieDetails(movieTitle: string, relDate: string){

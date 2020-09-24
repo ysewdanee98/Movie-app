@@ -1,6 +1,7 @@
 import { Movie } from './../../dto/movie';
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/providers/movie.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-api',
@@ -11,15 +12,20 @@ export class ApiComponent implements OnInit {
 
   movies: Movie[];
 
-  constructor(private service: MovieService) {
+  constructor(private service: MovieService, private route: ActivatedRoute) {
     this.movies = [];
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.apiSelected = params.get('apiSel');
+      // console.log(params.get('genreSel'));
+    });
 
   }
 
-  @Input() apiSelected: string;
+  // @Input() apiSelected: string;
+  apiSelected: string;
 
   getPopularMovies() {
     this.service.fetchPopularMovies().subscribe(() => {

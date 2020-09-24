@@ -10,27 +10,28 @@ import { MovieService } from '../../providers/movie.service';
 })
 export class GenreComponent implements OnInit {
 
-  @Input() genreSelected: string = "";
+  // @Input() genreSelected: string = "";
+  genreSelected: string;
   movieList: Movie[] = [];
 
-  movieTitle: string;
-  releaseDate: string;
+  // movieTitle: string;
+  // releaseDate: string;
 
   constructor(private service: MovieService, private route: ActivatedRoute) {
-    this.movieTitle = "";
-    this.releaseDate = "";
-    this.isMovieDetailsSelected = false;
-    this.hideGenre = false;
+    // this.movieTitle = "";
+    // this.releaseDate = "";
+    // this.isMovieDetailsSelected = false;
+    // this.hideGenre = false;
   }
 
   ngOnInit(): void {
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
     });
-    this.hideGenre = false;
+    // this.hideGenre = false;
     this.route.paramMap.subscribe(params => {
-      // console.log(params.get('title'));
-      this.genreSelected = params.get('genre');
+      this.genreSelected = params.get('genreSel');
+      // console.log(params.get('genreSel'));
     });
   }
 
@@ -52,8 +53,8 @@ export class GenreComponent implements OnInit {
     return listMovieOfGenre;
   }
 
-  @Input() isMovieDetailsSelected: boolean;
-  @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
+  // @Input() isMovieDetailsSelected: boolean;
+  // @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
 
   movieDetails(movieTitle: string, relDate: string){
     // this.movieTitle = movieTitle;
@@ -74,10 +75,10 @@ export class GenreComponent implements OnInit {
     console.log(this.ratingSelected);
   }
 
-  hideGenre: boolean;
+  // hideGenre: boolean;
 
-  hide(){
-    this.hideGenre = true;
-  }
+  // hide(){
+  //   this.hideGenre = true;
+  // }
 
 }

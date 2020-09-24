@@ -1,7 +1,6 @@
 import { Movie } from './../../dto/movie';
 import { MovieService } from './../../providers/movie.service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -10,24 +9,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  @Input() genreSelected: string;
+  // @Input() genreSelected: string;
+  genreSelected: string;
   // @Input() isGenreSelected: boolean;
 
   movieList: Movie[] = [];
 
-  constructor(private service: MovieService, private route: ActivatedRoute) {
-    this.genreSelected = "";
+  constructor(private service: MovieService) {
+    // this.genreSelected = "";
     // this.isGenreSelected = false;
   }
+
 
   ngOnInit(): void {
     //Getting data from JSON and store in movies array
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
-    });
-    this.route.paramMap.subscribe(params => {
-      // console.log(params.get('title'));
-      this.genreSelected = params.get('genre');
     });
   }
 

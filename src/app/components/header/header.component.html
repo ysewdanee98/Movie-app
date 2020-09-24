@@ -4,13 +4,15 @@
 
   <div class="search-container">
     <input type="text" [(ngModel)]="searchMovie" class="searchTerm" placeholder="Search movies">
-    <div class="searchButton" (click)="operationSearch()"></div>
+    <div class="searchButton" [routerLink] = "['search', searchMovie]" (click)="operationSearch()"></div>
   </div>
 
  <div class="restAPI-container">
    API Buttons: <br>
-  <input type="button" class="buttonAPI" value="Upcoming" (click)="getAPI('Upcoming')">
-  <input type="button" class="buttonAPI" value="Popular" (click)="getAPI('Popular')">
+  <!-- <input type="button" class="buttonAPI" value="Upcoming" (click)="getAPI('Upcoming')">
+  <input type="button" class="buttonAPI" value="Popular" (click)="getAPI('Popular')"> -->
+  <input type="button" [routerLink] = "['api', 'Upcoming']" class="buttonAPI" value="Upcoming">
+  <input type="button" [routerLink] = "['api', 'Popular']" class="buttonAPI" value="Popular">
  </div>
 </div>
 

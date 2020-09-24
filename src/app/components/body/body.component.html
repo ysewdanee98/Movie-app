@@ -13,18 +13,18 @@
     </div> -->
 
     <!-- {{searchMovie}} {{isSearchSelected}} -->
-    <div *ngIf="isSearchSelected==true">
+    <!-- <div *ngIf="isSearchSelected==true">
       <app-search [searchMovie]="searchMovie" (newMovieDetailsEvent)="changeMovieDetails($event)"></app-search>
       {{updateSearch()}}
-    </div>
+    </div> -->
 
     <!-- {{isAPISelected}} -->
-    <div *ngIf="isAPISelected==true">
+    <!-- <div *ngIf="isAPISelected==true">
       <app-api [apiSelected]="apiSelected"></app-api>
       {{updateAPI()}}
-    </div>
+    </div> -->
 
-    <!-- <router-outlet></router-outlet> -->
+    <router-outlet></router-outlet>
 
   </div>
 </div>

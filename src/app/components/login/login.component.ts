@@ -54,4 +54,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  hide = true;
+
+  // visibility_off(){
+  //   return <img src="assets/arrowIcon.png">;
+  // }
+
 }

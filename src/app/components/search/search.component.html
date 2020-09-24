@@ -12,7 +12,10 @@
   <div class = "cardContainer">
     <div class="card" *ngFor="let movie of getSearchList()">
        <div class="rating">{{ movie.imdbRating }}</div>
-       <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div>
+       <!-- <div class="poster" [routerLink] = "['movieDetails', movie.title]"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div> -->
+       <div class="poster">
+        <a [routerLink] = "['movieDetails', movie.title]"><img src={{movie.posterurl}} width="275px" height="350px" (click)="hide()" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></a>
+       </div>
        <div class="name" *ngIf="movie.originalTitle == ''">{{ movie.title }}</div>
        <div class="name">{{ movie.originalTitle }}</div>
        <div class="genres">{{ movie.genres }}</div>
@@ -24,8 +27,9 @@
   <div class = "cardContainer">
     <div class="card" *ngFor="let movie of movieByRatingList">
        <div class="rating">{{ movie.imdbRating }}</div>
-       <div class="poster"><img src={{movie.posterurl}} width="275px" height="350px" (click)="movieDetails(movie.title, movie.releaseDate)" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></div>
-       <div class="name" *ngIf="movie.originalTitle == ''">{{ movie.title }}</div>
+       <div class="poster">
+        <a [routerLink] = "['movieDetails', movie.title]"><img src={{movie.posterurl}} width="275px" height="350px" (click)="hide()" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></a>
+       </div>
        <div class="name">{{ movie.originalTitle }}</div>
        <div class="genres">{{ movie.genres }}</div>
     </div>
