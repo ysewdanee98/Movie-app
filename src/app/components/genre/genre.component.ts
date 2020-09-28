@@ -72,7 +72,7 @@ export class GenreComponent implements OnInit {
     this.RatingStatus = data;
     this.ratingSelected = this.RatingStatus.ratingSelected;
     this.movieByRatingList = this.RatingStatus.movieByRatingList;
-    console.log(this.ratingSelected);
+    // console.log(this.ratingSelected);
   }
 
   // hideGenre: boolean;

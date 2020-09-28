@@ -18,6 +18,8 @@ import { ApiComponent } from './components/api/api.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { AuthenticationService } from './providers/authentication.service';
+import { AuthenticationGuardService } from './providers/authentication-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     ReactiveFormsModule
   ],
   providers: [
-    MovieService
+    MovieService,
+    AuthenticationService,
+    AuthenticationGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 <div class="overlay" *ngIf="isPopUpStatus==true">
   <div class="popUp">
-    <h2>Settings</h2>
+    <p style="font-size: 20px;">Settings</p>
     <a class="close" (click)="changePopUpStatus()">&times;</a>
+    <input type="button" (click)="logOut()" class="buttonLogout" value="Logout">
   </div>
 </div>

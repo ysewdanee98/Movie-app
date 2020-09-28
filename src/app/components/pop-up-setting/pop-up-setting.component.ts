@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../providers/authentication.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class PopUpSettingComponent implements OnInit {
   @Input() isPopUpStatus: boolean;
   @Output() newPopUpEvent = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +20,10 @@ export class PopUpSettingComponent implements OnInit {
     this.isPopUpStatus = false;
     this.newPopUpEvent.emit(this.isPopUpStatus);
     // console.log("Clicked on X");
+  }
+
+  logOut(){
+    this.authenticationService.logout();
   }
 
 }

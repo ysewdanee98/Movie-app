@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../../providers/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private route: Router) {
+  constructor(private router: Router, private authenticationService: AuthenticationService, private route: ActivatedRoute) {
     this.isChecked = false;
   }
 
   ngOnInit(): void {
+    // this.authenticationService.logout();
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
-  emailValue: string;
-  passwordValue: string;
 
   isChecked: boolean;
   label: string;
@@ -27,37 +28,44 @@ export class LoginComponent implements OnInit {
   }
 
   get primEmail(){
-    return this.user.get('primaryEmail');
+    return this.userData.get('primaryEmail');
   }
 
   get password(){
-    return this.user.get('password');
+    return this.userData.get('password');
   }
 
-  user = new FormGroup({
+  get f() { return this.userData.controls; }
+
+  userData = new FormGroup({
     primaryEmail: new FormControl('',[
       Validators.required,
-      Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
+      Validators.pattern("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$")]),
 
     password: new FormControl('',[
       Validators.required,
       Validators.minLength(6)])
   });
 
+  returnUrl: string;
+
   signIn(){
-    if (this.user.invalid) {
+    if (this.userData.invalid) {
       console.log("There is error");
       // return;
     } else {
       console.log("No error found");
-      this.route.navigateByUrl('/home');
+      // this.route.navigateByUrl('/home');
+      this.authenticationService.login(this.f.primaryEmail.value, this.f.password.value)
+      .pipe()
+      .subscribe(
+          data => {
+            this.router.navigate([this.returnUrl]);
+          },
+      );
     }
   }
 
   hide = true;
-
-  // visibility_off(){
-  //   return <img src="assets/arrowIcon.png">;
-  // }
 
 }

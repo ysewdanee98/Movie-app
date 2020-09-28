@@ -6,19 +6,19 @@ import { LoginComponent } from './components/login/login.component';
 import { GenreComponent } from './components/genre/genre.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApiComponent } from './components/api/api.component';
+import { AuthenticationGuardService } from './providers/authentication-guard.service';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent },
-  {path: 'home', component: HomeComponent,
+  {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthenticationGuardService],
     children: [
-      {path: 'genre/:genreSel', pathMatch: 'full', component: GenreComponent},
+      {path: 'genre/:genreSel', component: GenreComponent},
       {path: 'genre/:genreSel/movieDetails/:title', component: MovieDetailsComponent},
       {path: 'search/:searchText', component: SearchComponent},
       {path: 'search/:searchText/movieDetails/:title', component: MovieDetailsComponent},
       {path: 'api/:apiSel', component: ApiComponent}
     ] },
-  {path: '**', component: LoginComponent}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
