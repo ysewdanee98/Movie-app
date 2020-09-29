@@ -1,5 +1,6 @@
 import { AuthenticationService } from './../../providers/authentication.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-pop-up-setting',
@@ -11,7 +12,7 @@ export class PopUpSettingComponent implements OnInit {
   @Input() isPopUpStatus: boolean;
   @Output() newPopUpEvent = new EventEmitter<boolean>();
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, public translate: TranslateService) { }
 
   ngOnInit(): void {
   }

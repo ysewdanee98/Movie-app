@@ -1,0 +1,20 @@
+{
+  "welcome": "Movie Site",
+  "searchPlaceHolder": "Search movies...",
+  "buttonApi": "API Buttons:",
+  "setting": "Settings",
+  "logout": "Logout",
+  "ratingfilter": "Rating Filter:",
+  "ratingAll": "All",
+  "movieDetails": "Movie Details:",
+  "movieName": "Movie name:",
+  "year": "Year:",
+  "rating": "Rating:",
+  "releaseDate": "Release date:",
+  "genre": "Genres:",
+  "actor": "Actors:",
+  "storyline": "Storyline:",
+  "searchRe": "Search",
+  "searchReSults": "results:"
+
+}

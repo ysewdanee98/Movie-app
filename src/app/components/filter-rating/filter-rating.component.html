@@ -1,5 +1,5 @@
-<div class="positionButton">Rating Filter:
-<input type="button" class="buttonRating" [class.selected]="ratingSelected == 'All'" value="All" (click)="getFilteredMovie('All')">
+<div class="positionButton">{{'ratingfilter' | translate}}
+<input type="button" class="buttonRating" [class.selected]="ratingSelected == 'All'" value="{{'ratingAll' | translate}}" (click)="getFilteredMovie('All')">
 <input type="button" class="buttonRating" [class.selected]="ratingSelected == '>= 8.5'" value=">= 8.5" (click)="getFilteredMovie('>= 8.5')">
 <input type="button" class="buttonRating" [class.selected]="ratingSelected == '< 8.5'" value="< 8.5" (click)="getFilteredMovie('< 8.5')">
 </div>

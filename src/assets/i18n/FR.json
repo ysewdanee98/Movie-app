@@ -1,0 +1,20 @@
+{
+  "welcome": "Site du film",
+  "searchPlaceHolder": "Rechercher des films ...",
+  "buttonApi": "Boutons API:",
+  "setting": "Réglages",
+  "logout": "Déconnecter",
+  "ratingfilter": "Filtre d'évaluation:",
+  "ratingAll": "Tout",
+  "movieDetails": "Détails du film:",
+  "movieName": "Nom du film:",
+  "year": "Année:",
+  "rating": "Évaluation:",
+  "releaseDate": "Date de sortie:",
+  "genre": "Genres:",
+  "actor": "Acteurs:",
+  "storyline": "Scénario:",
+  "searchRe": "Recherche",
+  "searchReSults": "résultats:"
+}
+

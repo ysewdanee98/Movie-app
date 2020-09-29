@@ -1,7 +1,19 @@
 <div class="overlay" *ngIf="isPopUpStatus==true">
   <div class="popUp">
-    <p style="font-size: 20px;">Settings</p>
+    <div style="font-size: 20px;">{{'setting' | translate}}</div>
     <a class="close" (click)="changePopUpStatus()">&times;</a>
-    <input type="button" (click)="logOut()" class="buttonLogout" value="Logout">
+
+    <br>
+
+    <select style="right: 5px" #langSelect (change)="translate.use(langSelect.value)">
+      <option
+      *ngFor="let lang of translate.getLangs()"
+      [value]="lang"
+    >{{lang}}</option>
+    </select>
+
+    &nbsp;&nbsp;&nbsp;
+
+    <input type="button" (click)="logOut()" class="buttonLogout" value="{{'logout' | translate}}">
   </div>
 </div>

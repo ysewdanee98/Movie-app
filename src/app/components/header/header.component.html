@@ -1,14 +1,14 @@
 <div class="header">
   <div class="buttonSettings" (click)="popUpToggle()"></div>
-  <h1 style="padding-left: 25px; color: black; text-align: left;">Movie Site</h1>
+  <h1 style="padding-left: 25px; color: black; text-align: left;">{{'welcome' | translate}}</h1>
 
   <div class="search-container">
-    <input type="text" [(ngModel)]="searchMovie" class="searchTerm" placeholder="Search movies">
+    <input type="text" [(ngModel)]="searchMovie" class="searchTerm" placeholder="{{'searchPlaceHolder' | translate}}">
     <div class="searchButton" [routerLink] = "['search', searchMovie]" (click)="operationSearch()"></div>
   </div>
 
  <div class="restAPI-container">
-   API Buttons: <br>
+  {{'buttonApi' | translate}} <br>
   <!-- <input type="button" class="buttonAPI" value="Upcoming" (click)="getAPI('Upcoming')">
   <input type="button" class="buttonAPI" value="Popular" (click)="getAPI('Popular')"> -->
   <input type="button" [routerLink] = "['api', 'Upcoming']" class="buttonAPI" value="Upcoming">

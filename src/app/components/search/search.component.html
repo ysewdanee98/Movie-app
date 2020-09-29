@@ -1,5 +1,5 @@
 <div *ngIf="searchMovie != ''">
-  <div style="font-size:20px;">Search '{{searchMovie}}' results:</div>
+  <div style="font-size:20px;">{{'searchRe' | translate}} '{{searchMovie}}' {{'searchReSults' | translate}}</div>
     <div class="filterRating" *ngIf="getSearchList().length != 0"><app-filter-rating [ratingSelected]="ratingSelected" [listMoviesNotFiltered]="getSearchList()" (newRatingEvent)="changeRating($event)"></app-filter-rating></div>
     <div *ngIf="getSearchList().length == 0">
       <p style="font-size:20px;">Not found.</p>

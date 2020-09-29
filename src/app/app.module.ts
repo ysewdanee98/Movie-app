@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AuthenticationService } from './providers/authentication.service';
 import { AuthenticationGuardService } from './providers/authentication-guard.service';
+import { I18nModule } from './i18n/i18n.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthenticationGuardService } from './providers/authentication-guard.ser
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    I18nModule
   ],
   providers: [
     MovieService,
