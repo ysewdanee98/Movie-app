@@ -1,0 +1,20 @@
+{
+  "welcome": "मूवी साइट",
+  "searchPlaceHolder": "फिल्में खोजें ...",
+  "buttonApi": "एपीआई बटन:",
+  "setting": "समायोजन",
+  "logout": "लॉग आउट",
+  "ratingfilter": "रेटिंग फ़िल्टर:",
+  "ratingAll": "सब",
+  "movieDetails": "मूवी का विवरण:",
+  "movieName": "फिल्म का नाम:",
+  "year": "साल:",
+  "rating": "रेटिंग:",
+  "releaseDate": "रिलीज़ की तारीख:",
+  "genre": "शैलियां:",
+  "actor": "अभिनेता:",
+  "storyline": "कहानी:",
+  "searchRe": "खोज",
+  "searchReSults": "परिणाम:"
+
+}
