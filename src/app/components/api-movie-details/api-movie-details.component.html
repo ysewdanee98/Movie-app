@@ -1,0 +1,21 @@
+<div class= "movieDetails">
+  <div style="font-size:30px;">{{'movieDetails' | translate}}</div>
+    <div class="title">{{'movieName' | translate}} {{ getApiMovieDetails().title }}</div>
+    <div [ngStyle]="getBackground(getApiMovieDetails().poster_path)"></div>
+    <div class="ratingReleaseDateYearGenreActors">
+      <p>{{'rating' | translate}} {{ getApiMovieDetails().vote_average }}</p>
+      <p>{{'releaseDate' | translate}} {{ getApiMovieDetails().release_date }}</p>
+      <div style="font-size:20px;">{{'genre' | translate}}</div>
+      <div *ngFor="let genre of getApiMovieDetails().genres">
+        {{ genre.name }}
+      </div>
+      <br>
+    </div>
+    <br>
+    <div class="storyline">
+      {{'storyline' | translate}}
+      <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ getApiMovieDetails().overview }}
+    </div>
+
+</div>
+

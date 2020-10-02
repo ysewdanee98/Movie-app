@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     } else {
       console.log("No error found");
       // this.route.navigateByUrl('/home');
-      this.authenticationService.login(this.f.primaryEmail.value, this.f.password.value)
+      this.authenticationService.login(this.f.primaryEmail.value)
       .pipe()
       .subscribe(
           data => {

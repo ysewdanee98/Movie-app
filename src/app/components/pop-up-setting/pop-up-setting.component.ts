@@ -20,7 +20,6 @@ export class PopUpSettingComponent implements OnInit {
   changePopUpStatus(){
     this.isPopUpStatus = false;
     this.newPopUpEvent.emit(this.isPopUpStatus);
-    // console.log("Clicked on X");
   }
 
   logOut(){

@@ -1,5 +1,5 @@
 import { Movie } from './../../dto/movie';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/providers/movie.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -19,26 +19,24 @@ export class ApiComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.apiSelected = params.get('apiSel');
-      // console.log(params.get('genreSel'));
     });
 
   }
 
-  // @Input() apiSelected: string;
   apiSelected: string;
 
   getPopularMovies() {
     this.service.fetchPopularMovies().subscribe(() => {
       this.movies = this.service.movieList;
     });
-    return this.movies; //Added to return list
+    return this.movies;
   }
 
   getUpcomingMovies() {
     this.service.fetchUpcomingMovies().subscribe(() => {
       this.movies = this.service.movieList;
     });
-    return this.movies; //Added to return list
+    return this.movies;
   }
 
   getBackground(photo: string) {

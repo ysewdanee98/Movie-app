@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from './../../dto/movie';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MovieService } from '../../providers/movie.service';
 
 @Component({
@@ -10,28 +10,16 @@ import { MovieService } from '../../providers/movie.service';
 })
 export class GenreComponent implements OnInit {
 
-  // @Input() genreSelected: string = "";
   genreSelected: string;
   movieList: Movie[] = [];
-
-  // movieTitle: string;
-  // releaseDate: string;
-
-  constructor(private service: MovieService, private route: ActivatedRoute) {
-    // this.movieTitle = "";
-    // this.releaseDate = "";
-    // this.isMovieDetailsSelected = false;
-    // this.hideGenre = false;
-  }
+  constructor(private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
     });
-    // this.hideGenre = false;
     this.route.paramMap.subscribe(params => {
       this.genreSelected = params.get('genreSel');
-      // console.log(params.get('genreSel'));
     });
   }
 
@@ -40,7 +28,6 @@ export class GenreComponent implements OnInit {
     if(this.oldGenre != this.genreSelected){
       this.oldGenre = this.genreSelected;
       this.ratingSelected = "All";
-      // console.log(this.oldGenre);
     } else {
       //Do nothing
     }
@@ -53,17 +40,6 @@ export class GenreComponent implements OnInit {
     return listMovieOfGenre;
   }
 
-  // @Input() isMovieDetailsSelected: boolean;
-  // @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
-
-  movieDetails(movieTitle: string, relDate: string){
-    // this.movieTitle = movieTitle;
-    // this.releaseDate = relDate;
-    // this.isMovieDetailsSelected = true;
-    // this.newMovieDetailsEvent.emit({movieTitle: this.movieTitle, releaseDate: this.releaseDate, isMovieDetailsSelected: this.isMovieDetailsSelected});
-    // console.log(movieTitle+relDate);
-  }
-
   public RatingStatus = {ratingSelected: "", movieByRatingList: []};
   ratingSelected: string;
   movieByRatingList: Movie[];
@@ -74,11 +50,5 @@ export class GenreComponent implements OnInit {
     this.movieByRatingList = this.RatingStatus.movieByRatingList;
     // console.log(this.ratingSelected);
   }
-
-  // hideGenre: boolean;
-
-  // hide(){
-  //   this.hideGenre = true;
-  // }
 
 }

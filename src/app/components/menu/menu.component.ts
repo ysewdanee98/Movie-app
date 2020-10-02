@@ -1,6 +1,6 @@
 import { Movie } from './../../dto/movie';
 import { MovieService } from './../../providers/movie.service';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -9,17 +9,11 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  // @Input() genreSelected: string;
   genreSelected: string;
-  // @Input() isGenreSelected: boolean;
 
   movieList: Movie[] = [];
 
-  constructor(private service: MovieService) {
-    // this.genreSelected = "";
-    // this.isGenreSelected = false;
-  }
-
+  constructor(private service: MovieService) { }
 
   ngOnInit(): void {
     //Getting data from JSON and store in movies array
@@ -42,13 +36,8 @@ export class MenuComponent implements OnInit {
     return uniqueGenreArray;
   }
 
-  // @Output() newMenuEvent = new EventEmitter <{genreSelected: string, isGenreSelected: boolean}>();
-
   chosen(genreClicked: string){
-    // console.log(genreClicked);
     this.genreSelected = genreClicked;
-    // this.isGenreSelected = true;
-    // this.newMenuEvent.emit({genreSelected: this.genreSelected, isGenreSelected: this.isGenreSelected});
   }
 
 }

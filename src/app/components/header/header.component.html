@@ -9,8 +9,6 @@
 
  <div class="restAPI-container">
   {{'buttonApi' | translate}} <br>
-  <!-- <input type="button" class="buttonAPI" value="Upcoming" (click)="getAPI('Upcoming')">
-  <input type="button" class="buttonAPI" value="Popular" (click)="getAPI('Popular')"> -->
   <input type="button" [routerLink] = "['api', 'Upcoming']" class="buttonAPI" value="Upcoming">
   <input type="button" [routerLink] = "['api', 'Popular']" class="buttonAPI" value="Popular">
  </div>

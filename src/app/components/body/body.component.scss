@@ -1,22 +1,14 @@
 :host {
-  // display: flex;
   min-width: 100%;
-  // min-height: 100%;
 
   .body {
     height: 100%;
-    // width: 100%;
-    // padding-left: 15px;
-    // padding-top: 15px;
-    // padding-right: 5px;
-    // padding-bottom: 5px;
     background: rgb(50, 50, 75);
     color: white;
     padding-left: 210px;
 
     .bodyContainer {
       padding: 5px;
-
     }
 
   }

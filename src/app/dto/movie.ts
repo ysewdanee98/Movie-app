@@ -1,4 +1,5 @@
 export class Movie {
+  public id: any;
   public title: any;
   public originalTitle: any;
   public year: any;
@@ -80,7 +81,7 @@ export class Movie {
 	public get $posterurl(): any {
 		return this.posterurl;
   }
-  
+
     /**
      * Setter $title
      * @param {any} value
@@ -151,6 +152,22 @@ export class Movie {
      */
 	public set $posterurl(value: any) {
 		this.posterurl = value;
-	}
+  }
+
+    /**
+     * Getter $id
+     * @return {any}
+     */
+	public get $id(): any {
+		return this.id;
+  }
+
+    /**
+     * Setter $id
+     * @param {any} value
+     */
+	public set $id(value: any) {
+		this.id = value;
+  }
 
 }

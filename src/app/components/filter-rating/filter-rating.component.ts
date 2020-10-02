@@ -17,16 +17,13 @@ export class FilterRatingComponent implements OnInit {
     this.movieByRating = [];
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   @Output() newRatingEvent = new EventEmitter <{ratingSelected: string, movieByRatingList: Movie[]}>();
 
   getFilteredMovie(rating: string){
     this.ratingSelected = rating;
     this.newRatingEvent.emit({ratingSelected: this.ratingSelected, movieByRatingList: this.getFilterList()});
-    // console.log(this.ratingSelected);
   }
 
   getFilterList(){

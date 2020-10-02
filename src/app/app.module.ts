@@ -21,6 +21,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { AuthenticationService } from './providers/authentication.service';
 import { AuthenticationGuardService } from './providers/authentication-guard.service';
 import { I18nModule } from './i18n/i18n.module';
+import { ApiMovieDetailsComponent } from './components/api-movie-details/api-movie-details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { I18nModule } from './i18n/i18n.module';
     ApiComponent,
     HomeComponent,
     LoginComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ApiMovieDetailsComponent
   ],
   imports: [
     BrowserModule,

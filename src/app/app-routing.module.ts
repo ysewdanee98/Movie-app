@@ -7,6 +7,7 @@ import { GenreComponent } from './components/genre/genre.component';
 import { SearchComponent } from './components/search/search.component';
 import { ApiComponent } from './components/api/api.component';
 import { AuthenticationGuardService } from './providers/authentication-guard.service';
+import { ApiMovieDetailsComponent } from './components/api-movie-details/api-movie-details.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'genre/:genreSel/movieDetails/:title', component: MovieDetailsComponent},
       {path: 'search/:searchText', component: SearchComponent},
       {path: 'search/:searchText/movieDetails/:title', component: MovieDetailsComponent},
-      {path: 'api/:apiSel', component: ApiComponent}
+      {path: 'api/:apiSel', component: ApiComponent},
+      {path: 'api/:apiSel/apiMovieDetails/:id', component: ApiMovieDetailsComponent}
     ] },
   {path: '**', redirectTo: 'home'}
 ];

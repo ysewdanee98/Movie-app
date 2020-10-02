@@ -1,5 +1,5 @@
 import { MovieService } from './../../providers/movie.service';
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from 'src/app/dto/movie';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,35 +12,24 @@ export class SearchComponent implements OnInit {
 
   movieList: Movie[] = [];
 
-  // movieTitle: string;
-  // releaseDate: string;
-
-  constructor(private service: MovieService, private route: ActivatedRoute) {
-    // this.movieTitle = "";
-    // this.releaseDate = "";
-    // this.isMovieDetailsSelected = false;
-  }
+  constructor(private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
     });
     this.route.paramMap.subscribe(params => {
-      // console.log(params.get('title'));
       this.searchMovie = params.get('searchText');
     });
   }
 
-  // @Input() searchMovie: string;
   searchMovie: string;
-  // @Input() isSearched: boolean;
 
   oldSearch: string = "";
   getSearchList(){
     if(this.oldSearch != this.searchMovie){
       this.oldSearch = this.searchMovie;
       this.ratingSelected = "All";
-      // console.log(this.oldGenre);
     } else {
       //Do nothing
     }
@@ -66,17 +55,6 @@ export class SearchComponent implements OnInit {
     return listSearched;
   }
 
-  // @Input() isMovieDetailsSelected: boolean;
-  @Output() newMovieDetailsEvent = new EventEmitter <{movieTitle: string, releaseDate: string, isMovieDetailsSelected: boolean}>();
-
-  movieDetails(movieTitle: string, relDate: string){
-    // this.movieTitle = movieTitle;
-    // this.releaseDate = relDate;
-    // this.isMovieDetailsSelected = true;
-    // this.newMovieDetailsEvent.emit({movieTitle: this.movieTitle, releaseDate: this.releaseDate, isMovieDetailsSelected: this.isMovieDetailsSelected});
-    // console.log(movieTitle+relDate);
-  }
-
   public RatingStatus = {ratingSelected: "", movieByRatingList: []};
   ratingSelected: string;
   movieByRatingList: Movie[];
@@ -85,7 +63,6 @@ export class SearchComponent implements OnInit {
     this.RatingStatus = data;
     this.ratingSelected = this.RatingStatus.ratingSelected;
     this.movieByRatingList = this.RatingStatus.movieByRatingList;
-    console.log(this.ratingSelected);
   }
 
 

@@ -2,7 +2,6 @@
   <div class="vertical-menu">
     <div *ngFor="let genre of getGenre()">
       <a [class.selected]="genreSelected==genre" [routerLink]="['genre', genre]" (click)="chosen(genre)"> {{ genre }}
-        <!-- <div1 *ngIf="genreSelected==genre && isGenreSelected==true"><img class="imageArrow" src="assets/arrowIcon.png"></div1> -->
         <div1 *ngIf="genreSelected==genre"><img class="imageArrow" src="assets/arrowIcon.png"></div1>
       </a>
     </div>
