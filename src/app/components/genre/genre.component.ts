@@ -11,15 +11,18 @@ import { MovieService } from '../../providers/movie.service';
 export class GenreComponent implements OnInit {
 
   genreSelected: string;
-  movieList: Movie[] = [];
+  movieList: Movie[];
   constructor(private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.service.getMovieData().subscribe((dataM: any) => {
-      this.movieList = dataM;
-    });
+    console.log("Genre page");
     this.route.paramMap.subscribe(params => {
       this.genreSelected = params.get('genreSel');
+    });
+    this.movieList = [];
+    this.service.getMovieData().subscribe((dataM: any) => {
+      this.movieList = dataM;
+      console.log(this.movieList);
     });
   }
 
@@ -28,15 +31,16 @@ export class GenreComponent implements OnInit {
     if(this.oldGenre != this.genreSelected){
       this.oldGenre = this.genreSelected;
       this.ratingSelected = "All";
-    } else {
-      //Do nothing
+      console.log("Genre rating:" + this.ratingSelected);
     }
     let listMovieOfGenre: Movie[] = [];
     for (let entry of this.movieList) {
       if(entry.genres.includes(this.genreSelected)){
         listMovieOfGenre.push(entry);
+        console.log("Genre Matched");
       }
     }
+    this.listmovie = listMovieOfGenre;
     return listMovieOfGenre;
   }
 
@@ -48,7 +52,9 @@ export class GenreComponent implements OnInit {
     this.RatingStatus = data;
     this.ratingSelected = this.RatingStatus.ratingSelected;
     this.movieByRatingList = this.RatingStatus.movieByRatingList;
-    // console.log(this.ratingSelected);
+    console.log("Genre Rating changed");
   }
+
+  listmovie: any;
 
 }

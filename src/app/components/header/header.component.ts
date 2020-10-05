@@ -14,19 +14,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // console.log("Header page");
   }
 
   popUpToggle(){
     this.isPopUp = !this.isPopUp;
+    // console.log("Settings icon clicked");
   }
 
   searchMovie: string;
-
-  operationSearch(){
-    if (this.searchMovie != "") {
-      this.searchMovie = "";
-    }
-  }
 
 }

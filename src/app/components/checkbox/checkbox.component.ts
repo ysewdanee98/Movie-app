@@ -15,11 +15,13 @@ export class CheckboxComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    // console.log("Check box page");
   }
 
   toggleChecked(){
     this.checked = !this.checked;
-    this.checkChanged.emit(this.checked)
+    this.checkChanged.emit(this.checked);
+    // console.log("Check box clicked");
   }
 
 }

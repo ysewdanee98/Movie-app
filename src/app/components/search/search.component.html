@@ -1,7 +1,7 @@
-<div *ngIf="searchMovie != ''">
+<div *ngIf="searchMovies != ''">
   <div style="font-size:20px;">{{'searchRe' | translate}} '{{searchMovie}}' {{'searchReSults' | translate}}</div>
-    <div class="filterRating" *ngIf="getSearchList().length != 0"><app-filter-rating [ratingSelected]="ratingSelected" [listMoviesNotFiltered]="getSearchList()" (newRatingEvent)="changeRating($event)"></app-filter-rating></div>
-    <div *ngIf="getSearchList().length == 0">
+  <div class="filterRating" *ngIf="getSearchList().length != 0"><app-filter-rating [ratingSelected]="ratingSelected" [listMoviesNotFiltered]="listmovie" (newRatingEvent)="changeRating($event)"></app-filter-rating></div>
+    <div *ngIf="listmovie.length == 0">
       <p style="font-size:20px;">Not found.</p>
     </div>
     <div *ngIf="ratingSelected=='All'; then filterAll else filterNotAll">
@@ -10,7 +10,7 @@
 
 <ng-template #filterAll>
   <div class = "cardContainer">
-    <div class="card" *ngFor="let movie of getSearchList()">
+    <div class="card" *ngFor="let movie of listmovie">
        <div class="rating">{{ movie.imdbRating }}</div>
        <div class="poster">
         <a [routerLink] = "['movieDetails', movie.title]"><img src={{movie.posterurl}} width="275px" height="350px" (click)="hide()" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';"></a>

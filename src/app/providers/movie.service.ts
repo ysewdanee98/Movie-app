@@ -12,9 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class MovieService {
 
 
-  constructor(private http: HttpClient, private translate: TranslateService) {
-
-   }
+  constructor(private http: HttpClient, private translate: TranslateService) { }
 
   getMovieData(){
     return this.http.get("../../assets/movies.json");
@@ -64,8 +62,8 @@ export class MovieService {
   apiKey: string= "api_key=fed69657ba4cc6e1078d2a6a95f51c8c"
   language: string= "&language="
 
-  getApiMovieDetails(id: number) {
-    console.log(this.url + id + "?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
+  getApiMovieDetails(id: string) {
+    // console.log(this.url + id + "?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
     return this.http.get(this.url + id + "?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
   }
 

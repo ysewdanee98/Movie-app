@@ -13,11 +13,13 @@ export class FilterRatingComponent implements OnInit {
   movieByRating: Movie[];
 
   constructor() {
-    this.ratingSelected = "All";
-    this.movieByRating = [];
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // console.log("FilterRating page");
+    this.ratingSelected = "All";
+    this.movieByRating = [];
+   }
 
   @Output() newRatingEvent = new EventEmitter <{ratingSelected: string, movieByRatingList: Movie[]}>();
 
@@ -30,19 +32,24 @@ export class FilterRatingComponent implements OnInit {
     let listArray: Movie[] = [];
     let optionArray: Movie[] = [];
     optionArray = this.listMoviesNotFiltered;
+
     if (this.ratingSelected == "All") {
+      // console.log("All");
       for (let entry of optionArray) {
         listArray.push(entry);
       }
     } else if (this.ratingSelected == ">= 8.5") {
+      // console.log(">= 8.5");
       for (let entry of optionArray) {
         listArray = optionArray.filter(m => m.imdbRating >= 8.5 );
       }
     } else if (this.ratingSelected == "< 8.5") {
+      // console.log("< 8.5");
       for (let entry of optionArray) {
         listArray = optionArray.filter(m => m.imdbRating < 8.5 );
       }
     }
+
     let sortedArray: Movie[] = listArray.sort((n1,n2) => {
       if (n1.imdbRating < n2.imdbRating) {
           return 1;

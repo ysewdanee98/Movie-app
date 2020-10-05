@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.authenticationService.logout();
+    // console.log("SignIn page");
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   rememberMe(check: boolean) {
     this.isChecked = check;
+    // console.log("Sign in checkbox clicked");
   }
 
   get primEmail(){
@@ -51,10 +52,10 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     if (this.userData.invalid) {
-      console.log("There is error");
+      // console.log("SignIn Error");
       // return;
     } else {
-      console.log("No error found");
+      // console.log("No SignIn Error");
       // this.route.navigateByUrl('/home');
       this.authenticationService.login(this.f.primaryEmail.value)
       .pipe()

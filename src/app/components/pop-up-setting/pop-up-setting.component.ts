@@ -15,14 +15,17 @@ export class PopUpSettingComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, public translate: TranslateService) { }
 
   ngOnInit(): void {
+    // console.log("Settings page");
   }
 
   changePopUpStatus(){
     this.isPopUpStatus = false;
     this.newPopUpEvent.emit(this.isPopUpStatus);
+    // console.log("Settings close clicked");
   }
 
   logOut(){
+    // console.log("Logout clicked");
     this.authenticationService.logout();
   }
 

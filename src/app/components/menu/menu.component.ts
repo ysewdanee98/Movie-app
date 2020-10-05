@@ -16,9 +16,10 @@ export class MenuComponent implements OnInit {
   constructor(private service: MovieService) { }
 
   ngOnInit(): void {
-    //Getting data from JSON and store in movies array
+    // console.log("Menu page");
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
+      // console.log(this.movieList);
     });
   }
 
@@ -38,6 +39,7 @@ export class MenuComponent implements OnInit {
 
   chosen(genreClicked: string){
     this.genreSelected = genreClicked;
+    // console.log(genreClicked);
   }
 
 }

@@ -12,19 +12,22 @@ export class ApiMovieDetailsComponent implements OnInit {
   constructor(private service: MovieService, private route: ActivatedRoute) {
   }
 
-  idSelected: any;
+  idSelected: string;
 
   ngOnInit(): void {
+    // console.log("Api Movie Details Page");
+    this.detailsMovie = [];
+    this.idSelected = "";
     this.route.paramMap.subscribe(params => {
       this.idSelected = params.get('id');
       this.service.getApiMovieDetails(this.idSelected).subscribe((dataM: any) => {
         this.detailsMovie = dataM;
-        console.log(this.detailsMovie);
+        // console.log(this.detailsMovie);
       });
     });
   }
 
-  detailsMovie: any = [];
+  detailsMovie: any;
 
   getApiMovieDetails() {
     return this.detailsMovie;
@@ -32,10 +35,10 @@ export class ApiMovieDetailsComponent implements OnInit {
 
   getBackground(photo: string) {
     return {
-      "background" : `url("https://image.tmdb.org/t/p/w300${photo}")`,
-      "background-repeat": "no-repeat",
-      "height": "600px",
-      "width": "450px",
+      "background": `lightblue url("https://image.tmdb.org/t/p/w300${photo}")center center no-repeat`,
+      "height": "500px",
+      "width": "350px",
+      "background-size": "cover",
       "float": "right",
       "padding": "15px",
       "position": "relative"
