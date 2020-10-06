@@ -24,9 +24,14 @@ export class MovieService {
     return this._movieList;
   }
 
+  url: string= "https://api.themoviedb.org/3/movie/";
+  apiKey: string= "api_key=fed69657ba4cc6e1078d2a6a95f51c8c"
+  language: string= "&language="
+
   fetchPopularMovies(): Observable<any> {
     this._movieList = [];
-    return this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=fed69657ba4cc6e1078d2a6a95f51c8c`)
+    // console.log(this.url + "popular?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
+    return this.http.get(this.url + "popular?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase())
       .pipe(map((data: any) => {
       if (data != null) {
         data.results.forEach(element => {
@@ -43,7 +48,8 @@ export class MovieService {
 
   fetchUpcomingMovies(): Observable<any> {
     this._movieList = [];
-    return this.http.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=fed69657ba4cc6e1078d2a6a95f51c8c`)
+    // console.log(this.url + "upcoming?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
+    return this.http.get(this.url + "upcoming?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase())
       .pipe(map((data: any) => {
       if (data != null) {
         data.results.forEach(element => {
@@ -57,10 +63,6 @@ export class MovieService {
       }
     }));
   }
-
-  url: string= "https://api.themoviedb.org/3/movie/";
-  apiKey: string= "api_key=fed69657ba4cc6e1078d2a6a95f51c8c"
-  language: string= "&language="
 
   getApiMovieDetails(id: string) {
     // console.log(this.url + id + "?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());

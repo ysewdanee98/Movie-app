@@ -1,11 +1,15 @@
-<div style="font-size:20px;">{{apiSelected}}</div>
-
-<div class = "cardContainer">
-  <div class="card" *ngFor="let movie of getList()">
-    <div class="rating">{{ movie.imdbRating }}</div>
-    <div [ngStyle]="getBackground(movie.posterurl)"></div>
-    <div class="name">{{ movie.title }}</div>
-    <a [routerLink] = "['apiMovieDetails', movie.id]">Click for more details</a>
+<div *ngIf="isMovieListLoaded==false">
+  {{getList()}}
+</div>
+<div *ngIf="movieList">
+  <div style="font-size:20px;">{{apiSelected}}</div>
+  <div class = "cardContainer">
+    <div class="card" *ngFor="let movie of movieList">
+      <div class="rating">{{ movie.imdbRating }}</div>
+      <div [ngStyle]="getBackground(movie.posterurl)"></div>
+      <div class="name">{{ movie.title }}</div>
+      <a style="color: #cc0000" [routerLink] = "['apiMovieDetails', movie.id]">{{'ClickForMoreDetails' | translate}}</a>
+    </div>
   </div>
 </div>
 

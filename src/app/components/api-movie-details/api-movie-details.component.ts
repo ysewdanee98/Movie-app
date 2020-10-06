@@ -13,24 +13,28 @@ export class ApiMovieDetailsComponent implements OnInit {
   }
 
   idSelected: string;
+  detailsMovie: any;
+  isMovieListLoaded: boolean;
 
   ngOnInit(): void {
     // console.log("Api Movie Details Page");
-    this.detailsMovie = [];
-    this.idSelected = "";
+    this.idSelected = ""
     this.route.paramMap.subscribe(params => {
       this.idSelected = params.get('id');
-      this.service.getApiMovieDetails(this.idSelected).subscribe((dataM: any) => {
-        this.detailsMovie = dataM;
-        // console.log(this.detailsMovie);
-      });
+      // console.log("From Url: " +this.idSelected);
+      this.isMovieListLoaded=false;
+      // console.log("List Api details loaded? " + this.isMovieListLoaded);
+      this.detailsMovie = [];
     });
   }
 
-  detailsMovie: any;
-
   getApiMovieDetails() {
-    return this.detailsMovie;
+    this.service.getApiMovieDetails(this.idSelected).subscribe((dataM: any) => {
+      this.detailsMovie = dataM;
+      // console.log(this.detailsMovie);
+      // console.log("List Api details loaded? " + this.isMovieListLoaded);
+    });
+    this.isMovieListLoaded=true;
   }
 
   getBackground(photo: string) {

@@ -1,27 +1,39 @@
-<div class= "movieDetails">
-  <div style="font-size:30px;">{{'movieDetails' | translate}}</div>
-  <div *ngFor="let movie of getDetails()">
-    <div class="title" *ngIf="movie.originalTitle == ''">{{'movieName' | translate}} {{ movie.title }}</div>
-    <div class="title" *ngIf="movie.originalTitle != ''">{{'movieName' | translate}} {{ movie.originalTitle }}</div>
-    <img src={{movie.posterurl}} width="450px" height="600px" style="float:right; padding: 15px; position: relative;" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';">
-    <div class="ratingReleaseDateYearGenreActors">
-      <p>{{'year' | translate}} {{ movie.year }}</p>
-      <p>{{'rating' | translate}} {{ movie.imdbRating }}</p>
-      <p>{{'releaseDate' | translate}} {{ movie.releaseDate }}</p>
-      <div style="font-size:20px;">{{'genre' | translate}}</div>
-      <div *ngFor="let genre of movie.genres">
-        {{ genre }}
+<div *ngIf="isServiceLoaded==true">
+  <div *ngIf="isMovieListLoaded==false">
+    {{getDetails()}}
+  </div>
+  <div *ngIf="detailsMovie">
+    <div class= "movieDetails">
+      <div *ngIf="detailsMovie.length == 0">
+        <p style="font-size:30px;">Not found.</p>
       </div>
-      <br>
-      <div style="font-size:20px;">{{'actor' | translate}}</div>
-      <div *ngFor="let actor of movie.actors">
-        {{ actor }}
+      <div *ngIf="detailsMovie.length != 0">
+        <div style="font-size:30px;">{{'movieDetails' | translate}}</div>
+        <div *ngFor="let movie of detailsMovie">
+          <div class="title" *ngIf="movie.originalTitle == ''">{{'movieName' | translate}} {{ movie.title }}</div>
+          <div class="title" *ngIf="movie.originalTitle != ''">{{'movieName' | translate}} {{ movie.originalTitle }}</div>
+          <img src={{movie.posterurl}} width="450px" height="600px" style="float:right; padding: 15px; position: relative;" onerror="this.onerror=null;this.src='../../../assets/posterNotFound.jpg';">
+          <div class="ratingReleaseDateYearGenreActors">
+            <p>{{'year' | translate}} {{ movie.year }}</p>
+            <p>{{'rating' | translate}} {{ movie.imdbRating }}</p>
+            <p>{{'releaseDate' | translate}} {{ movie.releaseDate }}</p>
+            <div style="font-size:20px;">{{'genre' | translate}}</div>
+            <div *ngFor="let genre of movie.genres">
+              {{ genre }}
+            </div>
+            <br>
+            <div style="font-size:20px;">{{'actor' | translate}}</div>
+            <div *ngFor="let actor of movie.actors">
+              {{ actor }}
+            </div>
+          </div>
+          <br>
+          <div class="storyline">
+            {{'storyline' | translate}}
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ movie.storyline }}
+          </div>
+        </div>
       </div>
-    </div>
-    <br>
-    <div class="storyline">
-      {{'storyline' | translate}}
-      <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ movie.storyline }}
     </div>
   </div>
 </div>

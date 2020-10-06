@@ -10,42 +10,47 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ApiComponent implements OnInit {
 
-  movies: Movie[];
+  movieList: Movie[];
+  apiSelected: string;
+  isMovieListLoaded: boolean;
 
   constructor(private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log("Api Page");
-    this.movies = [];
+    // console.log("Api Page");
+    this.apiSelected = "";
     this.route.paramMap.subscribe(params => {
       this.apiSelected = params.get('apiSel');
+      // console.log("From Url: " +this.apiSelected);
+      this.isMovieListLoaded=false;
+      // console.log("List API loaded? " + this.isMovieListLoaded);
+      this.movieList = [];
     });
   }
 
-  apiSelected: string;
-
   getPopularMovies() {
     this.service.fetchPopularMovies().subscribe(() => {
-      this.movies = this.service.movieList;
-      console.log(this.movies);
+      this.movieList = this.service.movieList;
+      // console.log(this.movieList);
+      // console.log("List API loaded? " + this.isMovieListLoaded);
     });
-    return this.movies;
   }
 
   getUpcomingMovies() {
     this.service.fetchUpcomingMovies().subscribe(() => {
-      this.movies = this.service.movieList;
-      console.log(this.movies);
+      this.movieList = this.service.movieList;
+      // console.log(this.movieList);
+      // console.log("List API loaded? " + this.isMovieListLoaded);
     });
-    return this.movies;
   }
 
   getList(){
     if (this.apiSelected == "Upcoming") {
-      return this.getUpcomingMovies();
+      this.getUpcomingMovies();
     } else if (this.apiSelected == "Popular") {
-      return this.getPopularMovies();
+      this.getPopularMovies();
     }
+    this.isMovieListLoaded=true;
   }
 
   getBackground(photo: string) {

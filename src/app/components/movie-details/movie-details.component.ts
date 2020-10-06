@@ -10,28 +10,39 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MovieDetailsComponent implements OnInit {
 
+  movieSelected: string;
   movieList: Movie[];
   detailsMovie: Movie[];
+  isServiceLoaded: boolean;
+  isMovieListLoaded: boolean;
 
   constructor(private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log("Movie details page");
+    // console.log("Movie details page");
+    this.movieSelected = ""
+    this.route.paramMap.subscribe(params => {
+      this.movieSelected = params.get('title');
+      // console.log("From Url: " +this.movieSelected);
+      this.isMovieListLoaded=false;
+      // console.log("List details loaded? " + this.isMovieListLoaded);
+      this.detailsMovie = [];
+    });
     this.movieList = [];
-    this.detailsMovie = [];
+    this.isServiceLoaded=false;
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
-      console.log(this.movieList);
+      // console.log(this.movieList);
+      this.isServiceLoaded=true;
+      // console.log("Service loaded? " + this.isServiceLoaded);
     });
   }
 
   getDetails(){
-    this.route.paramMap.subscribe(params => {
-      let movieTitle = params.get('title');
-      this.detailsMovie = this.movieList.filter(p => p.title==movieTitle);
-      console.log(this.detailsMovie);
-    });
-    return this.detailsMovie;
+    this.detailsMovie = this.movieList.filter(p => p.title==this.movieSelected);
+    // console.log(this.detailsMovie);
+    this.isMovieListLoaded=true;
+    // console.log("List details loaded? " + this.isMovieListLoaded);
   }
 
 }

@@ -12,17 +12,29 @@ export class GenreComponent implements OnInit {
 
   genreSelected: string;
   movieList: Movie[];
+  listMovieOfGenre: Movie[];
+  isServiceLoaded: boolean;
+  isMovieListLoaded: boolean;
+
   constructor(private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log("Genre page");
+    // console.log("Genre page");
+    this.genreSelected = "";
     this.route.paramMap.subscribe(params => {
       this.genreSelected = params.get('genreSel');
+      // console.log("From Url: " +this.genreSelected);
+      this.isMovieListLoaded=false;
+      // console.log("List genre loaded? " + this.isMovieListLoaded);
+      this.listMovieOfGenre = [];
     });
     this.movieList = [];
+    this.isServiceLoaded=false;
     this.service.getMovieData().subscribe((dataM: any) => {
       this.movieList = dataM;
-      console.log(this.movieList);
+      // console.log(this.movieList);
+      this.isServiceLoaded=true;
+      // console.log("Service loaded? " + this.isServiceLoaded);
     });
   }
 
@@ -31,17 +43,16 @@ export class GenreComponent implements OnInit {
     if(this.oldGenre != this.genreSelected){
       this.oldGenre = this.genreSelected;
       this.ratingSelected = "All";
-      console.log("Genre rating:" + this.ratingSelected);
+      // console.log("Genre rating:" + this.ratingSelected);
     }
-    let listMovieOfGenre: Movie[] = [];
     for (let entry of this.movieList) {
       if(entry.genres.includes(this.genreSelected)){
-        listMovieOfGenre.push(entry);
-        console.log("Genre Matched");
+        this.listMovieOfGenre.push(entry);
+        // console.log("Genre Matched");
       }
     }
-    this.listmovie = listMovieOfGenre;
-    return listMovieOfGenre;
+    this.isMovieListLoaded=true;
+    // console.log("List genre loaded? " + this.isMovieListLoaded);
   }
 
   public RatingStatus = {ratingSelected: "", movieByRatingList: []};
@@ -52,9 +63,7 @@ export class GenreComponent implements OnInit {
     this.RatingStatus = data;
     this.ratingSelected = this.RatingStatus.ratingSelected;
     this.movieByRatingList = this.RatingStatus.movieByRatingList;
-    console.log("Genre Rating changed");
+    // console.log("Genre Rating changed");
   }
-
-  listmovie: any;
 
 }
