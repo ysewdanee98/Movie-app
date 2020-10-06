@@ -1,3 +1,4 @@
+import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,10 @@ import { AuthenticationService } from './providers/authentication.service';
 import { AuthenticationGuardService } from './providers/authentication-guard.service';
 import { I18nModule } from './i18n/i18n.module';
 import { ApiMovieDetailsComponent } from './components/api-movie-details/api-movie-details.component';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { DialogRatingComponent } from './components/dialog-rating/dialog-rating.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DemoMaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,8 @@ import { ApiMovieDetailsComponent } from './components/api-movie-details/api-mov
     HomeComponent,
     LoginComponent,
     CheckboxComponent,
-    ApiMovieDetailsComponent
+    ApiMovieDetailsComponent,
+    DialogRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -46,12 +52,16 @@ import { ApiMovieDetailsComponent } from './components/api-movie-details/api-mov
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    I18nModule
+    I18nModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule
   ],
   providers: [
     MovieService,
     AuthenticationService,
-    AuthenticationGuardService
+    AuthenticationGuardService,
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
   ],
   bootstrap: [AppComponent]
 })

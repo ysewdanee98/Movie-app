@@ -2,6 +2,8 @@ import { Movie } from './../../dto/movie';
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/providers/movie.service';
 import { ActivatedRoute } from '@angular/router';
+import { DialogRatingComponent } from '../dialog-rating/dialog-rating.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-api',
@@ -14,7 +16,7 @@ export class ApiComponent implements OnInit {
   apiSelected: string;
   isMovieListLoaded: boolean;
 
-  constructor(private service: MovieService, private route: ActivatedRoute) { }
+  constructor(public dialog: MatDialog, private service: MovieService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // console.log("Api Page");
@@ -59,6 +61,23 @@ export class ApiComponent implements OnInit {
       "height": "350px",
       "width": "275px"
     };
+  }
+
+  id: string;
+  rating: number;
+  openDialog(id: string): void {
+    this.id = "";
+    this.rating = null;
+    this.id = id;
+    const dialogRef = this.dialog.open(DialogRatingComponent, {
+      width: '250px',
+      data: {id: this.id, rating: this.rating}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.rating = result;
+    });
   }
 
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../dto/movie';
-import {map} from 'rxjs/operators';
+import {map, mergeMap} from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -10,7 +10,6 @@ import { TranslateService } from '@ngx-translate/core';
 })
 
 export class MovieService {
-
 
   constructor(private http: HttpClient, private translate: TranslateService) { }
 
@@ -67,6 +66,31 @@ export class MovieService {
   getApiMovieDetails(id: string) {
     // console.log(this.url + id + "?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
     return this.http.get(this.url + id + "?" + this.apiKey + this.language + this.translate.currentLang.toLowerCase());
+  }
+
+  postRating(id: number, rating: number): Observable<any> {
+    console.log("https://api.themoviedb.org/3/authentication/guest_session/new?"+ this.apiKey);
+    return this.http.get("https://api.themoviedb.org/3/authentication/guest_session/new?"+ this.apiKey).pipe(
+      mergeMap((response: any) => {
+        if (response) {
+          console.log(response);
+          const httpOptions = {
+            params: {
+              api_key: "fed69657ba4cc6e1078d2a6a95f51c8c",
+              guest_session_id: response.guest_session_id
+            },
+            headers: {
+              'Content-Type': 'application/json;chatset=utf-8'
+            }
+          };
+          const body = {
+            value: rating
+          };
+          // console.log(this.url + id + "/rating");
+          return this.http.post(this.url + id + "/rating", body, httpOptions);
+        }
+      })
+    );
   }
 
 }
