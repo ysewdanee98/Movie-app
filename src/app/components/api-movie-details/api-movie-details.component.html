@@ -1,11 +1,11 @@
 <div *ngIf="isMovieListLoaded==false">
   {{getApiMovieDetails()}}
 </div>
-<div *ngIf="detailsMovie">
+<div *ngIf="detailsMovie.length != 0">
   <div class= "movieDetails">
     <div style="font-size:30px;">{{'movieDetails' | translate}}</div>
       <div class="title">{{'movieName' | translate}} {{ detailsMovie.title }}</div>
-      <div [ngStyle]="getBackground(detailsMovie.poster_path)"></div>
+      <div style="margin:20px;" [ngStyle]="getBackground(detailsMovie.poster_path)"></div>
       <div class="ratingReleaseDateYearGenreActors">
         <p>{{'rating' | translate}} {{ detailsMovie.vote_average }}</p>
         <p>{{'releaseDate' | translate}} {{ detailsMovie.release_date }}</p>
@@ -21,5 +21,15 @@
         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ detailsMovie.overview }}
       </div>
   </div>
-</div>
+  <br>
 
+  <div *ngIf="imageObject">
+    <p style="font-size:20px;">Gallery</p>
+    <div class="group-2">
+      <div><img *ngFor="let img of imageObject; let i = index" [src]="img.image" (click)="showLightbox(i)" /></div>
+    </div>
+    <!-- ng-image-fullscreen-view  -->
+    <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="currentIndex" [show]="showFlag" (close)="closeEventHandler()"></ng-image-fullscreen-view>
+  </div>
+
+</div>

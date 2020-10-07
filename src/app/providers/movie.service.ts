@@ -1,3 +1,4 @@
+import { Poster } from '../dto/poster';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -91,6 +92,28 @@ export class MovieService {
         }
       })
     );
+  }
+
+  private _galleryList: Poster[];
+
+  get galleryList(): Poster[] {
+    return this._galleryList;
+  }
+
+  getGalleryOfMovie(id: string): Observable<any> {
+    this._galleryList = [];
+    // console.log(this.url + id + "/images?" + this.apiKey);
+    return this.http.get(this.url + id + "/images?" + this.apiKey)
+    .pipe(map((data: any) => {
+      if (data != null) {
+        data.backdrops.forEach(element => {
+          const gal: Poster = new Poster();
+          gal.image = "https://image.tmdb.org/t/p/w300"+element.file_path;
+          // console.log(gal);
+          this._galleryList.push(gal);
+        });
+      }
+    }));
   }
 
 }

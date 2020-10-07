@@ -27,6 +27,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { DialogRatingComponent } from './components/dialog-rating/dialog-rating.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material/material.module';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { DemoMaterialModule } from './material/material.module';
     I18nModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    NgImageFullscreenViewModule
   ],
   providers: [
     MovieService,

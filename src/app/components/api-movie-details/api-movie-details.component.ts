@@ -25,6 +25,7 @@ export class ApiMovieDetailsComponent implements OnInit {
       this.isMovieListLoaded=false;
       // console.log("List Api details loaded? " + this.isMovieListLoaded);
       this.detailsMovie = [];
+      this.imageObject = [];
     });
   }
 
@@ -33,6 +34,10 @@ export class ApiMovieDetailsComponent implements OnInit {
       this.detailsMovie = dataM;
       // console.log(this.detailsMovie);
       // console.log("List Api details loaded? " + this.isMovieListLoaded);
+    });
+    this.service.getGalleryOfMovie(this.idSelected).subscribe(() => {
+      this.imageObject = this.service.galleryList;
+      // console.log(this.imageObject);
     });
     this.isMovieListLoaded=true;
   }
@@ -47,6 +52,22 @@ export class ApiMovieDetailsComponent implements OnInit {
       "padding": "15px",
       "position": "relative"
     };
+  }
+
+  currentIndex: any = -1;
+  showFlag: any = false;
+  imageObject: Array<object>;
+
+  showLightbox(index) {
+    // console.log(index);
+    this.currentIndex = index;
+    this.showFlag = true;
+  }
+
+  closeEventHandler() {
+    // console.log("Close full-screen");
+    this.showFlag = false;
+    this.currentIndex = -1;
   }
 
 }
