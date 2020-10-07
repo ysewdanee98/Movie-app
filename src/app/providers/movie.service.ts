@@ -69,11 +69,11 @@ export class MovieService {
   }
 
   postRating(id: number, rating: number): Observable<any> {
-    console.log("https://api.themoviedb.org/3/authentication/guest_session/new?"+ this.apiKey);
+    // console.log("https://api.themoviedb.org/3/authentication/guest_session/new?"+ this.apiKey);
     return this.http.get("https://api.themoviedb.org/3/authentication/guest_session/new?"+ this.apiKey).pipe(
       mergeMap((response: any) => {
         if (response) {
-          console.log(response);
+          // console.log(response);
           const httpOptions = {
             params: {
               api_key: "fed69657ba4cc6e1078d2a6a95f51c8c",

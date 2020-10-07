@@ -9,10 +9,10 @@
       <div [ngStyle]="getBackground(movie.posterurl)"></div>
       <div class="name">{{ movie.title }}</div>
       <a style="color: #cc0000" [routerLink] = "['apiMovieDetails', movie.id]">{{'ClickForMoreDetails' | translate}}</a>
-      <button mat-raised-button name="movie.imdbRating" (click)="openDialog(movie.id)">Rate it</button>
-      <!-- <li *ngIf="rating !=null && movie.id == id">
+      <button mat-raised-button name="movie.imdbRating" (click)="openDialog(movie.id, movie.title)">Rate it</button>
+      <li *ngIf="rating !=null && movie.id == id">
         Rated: <i>{{rating}}</i>
-      </li> -->
+      </li>
     </div>
   </div>
 </div>

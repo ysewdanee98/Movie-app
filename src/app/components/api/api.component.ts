@@ -64,18 +64,21 @@ export class ApiComponent implements OnInit {
   }
 
   id: string;
+  title: string;
   rating: number;
-  openDialog(id: string): void {
+  openDialog(id: string, title: string): void {
     this.id = "";
+    this.title = "";
     this.rating = null;
     this.id = id;
+    this.title = title;
     const dialogRef = this.dialog.open(DialogRatingComponent, {
-      width: '250px',
-      data: {id: this.id, rating: this.rating}
+      data: {id: this.id, title: this.title, rating: this.rating}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      // console.log(result);
+      // console.log('The dialog was closed');
       this.rating = result;
     });
   }
