@@ -28,6 +28,11 @@ import { DialogRatingComponent } from './components/dialog-rating/dialog-rating.
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material/material.module';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeIn from '@angular/common/locales/hi';
+registerLocaleData(localeFr, 'fr');
+registerLocaleData(localeIn, 'in');
 
 @NgModule({
   declarations: [

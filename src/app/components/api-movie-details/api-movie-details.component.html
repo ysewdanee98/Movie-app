@@ -8,7 +8,7 @@
       <div style="margin:20px;" [ngStyle]="getBackground(detailsMovie.poster_path)"></div>
       <div class="ratingReleaseDateYearGenreActors">
         <p>{{'rating' | translate}} {{ detailsMovie.vote_average }}</p>
-        <p>{{'releaseDate' | translate}} {{ detailsMovie.release_date }}</p>
+        <p>{{'releaseDate' | translate}} {{ detailsMovie.release_date | date :'d MMMM y': '+0200': translate.currentLang }}</p>
         <div style="font-size:20px;">{{'genre' | translate}}</div>
         <div *ngFor="let genre of detailsMovie.genres">
           {{ genre.name }}
@@ -29,7 +29,7 @@
       <div><img *ngFor="let img of imageObject; let i = index" [src]="img.image" (click)="showLightbox(i)" /></div>
     </div>
     <!-- ng-image-fullscreen-view  -->
-    <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="currentIndex" [show]="showFlag" (close)="closeEventHandler()"></ng-image-fullscreen-view>
+    <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="currentIndex" [paginationShow]="true" [animationSpeed]="1" [show]="showFlag" (close)="closeEventHandler()"></ng-image-fullscreen-view>
   </div>
 
 </div>

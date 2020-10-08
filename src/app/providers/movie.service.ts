@@ -108,7 +108,7 @@ export class MovieService {
       if (data != null) {
         data.backdrops.forEach(element => {
           const gal: Poster = new Poster();
-          gal.image = "https://image.tmdb.org/t/p/w300"+element.file_path;
+          gal.image = "https://image.tmdb.org/t/p/original"+element.file_path;
           // console.log(gal);
           this._galleryList.push(gal);
         });

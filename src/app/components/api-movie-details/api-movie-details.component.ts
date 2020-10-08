@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/providers/movie.service';
@@ -9,7 +10,7 @@ import { MovieService } from 'src/app/providers/movie.service';
 })
 export class ApiMovieDetailsComponent implements OnInit {
 
-  constructor(private service: MovieService, private route: ActivatedRoute) {
+  constructor(private service: MovieService, private route: ActivatedRoute , public translate: TranslateService) {
   }
 
   idSelected: string;

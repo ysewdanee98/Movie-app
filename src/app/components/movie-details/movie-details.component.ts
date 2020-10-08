@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Movie } from './../../dto/movie';
 import { MovieService } from './../../providers/movie.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,7 @@ export class MovieDetailsComponent implements OnInit {
   isServiceLoaded: boolean;
   isMovieListLoaded: boolean;
 
-  constructor(private service: MovieService, private route: ActivatedRoute) { }
+  constructor(private service: MovieService, private route: ActivatedRoute, public translate: TranslateService) { }
 
   ngOnInit(): void {
     // console.log("Movie details page");

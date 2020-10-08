@@ -16,7 +16,7 @@
           <div class="ratingReleaseDateYearGenreActors">
             <p>{{'year' | translate}} {{ movie.year }}</p>
             <p>{{'rating' | translate}} {{ movie.imdbRating }}</p>
-            <p>{{'releaseDate' | translate}} {{ movie.releaseDate }}</p>
+            <p>{{'releaseDate' | translate}} {{ movie.releaseDate | date :'d MMMM y': '+0200': translate.currentLang }}</p>
             <div style="font-size:20px;">{{'genre' | translate}}</div>
             <div *ngFor="let genre of movie.genres">
               {{ genre }}
