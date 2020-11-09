@@ -13,29 +13,33 @@ export class SearchComponent implements OnInit {
   movieList: Movie[];
   listSearched: Movie[];
   searchMovies: string;
-  isServiceLoaded: boolean;
-  isSearchListLoaded: boolean;
+  // isServiceLoaded: boolean;
+  // isSearchListLoaded: boolean;
 
   constructor(private service: MovieService, private route: ActivatedRoute) { }
 
-   ngOnInit(): void {
+   async ngOnInit() {
     // console.log("Search page");
     this.searchMovies = "";
-    this.route.paramMap.subscribe(params => {
-      this.searchMovies = params.get('searchText');
-      // console.log("From Url: " +this.searchMovies);
-      this.isSearchListLoaded=false;
-      // console.log("Search list loaded? " + this.isSearchListLoaded);
-      this.listSearched = [];
-    });
     this.movieList = [];
-    this.isServiceLoaded=false;
-    this.service.getMovieData().subscribe((dataM: any) => {
+    // this.isServiceLoaded=false;
+    await this.service.getMovieData().toPromise().then((dataM: any) => {
       this.movieList = dataM;
       // console.log(this.movieList);
-      this.isServiceLoaded=true;
+      // this.isServiceLoaded=true;
       // console.log("Service loaded? " + this.isServiceLoaded);
+      // console.log('Promise resolved.')
     });
+    // console.log('I will not wait until promise is resolved..');
+    this.route.paramMap.subscribe(async params => {
+      this.searchMovies = params.get('searchText');
+      // console.log("From Url: " +this.searchMovies);
+      // this.isSearchListLoaded=false;
+      // console.log("Search list loaded? " + this.isSearchListLoaded);
+      this.listSearched = [];
+      await this.getSearchList();
+    });
+    // console.log('I will not wait haha');
   }
 
   oldSearch: string = "";
@@ -65,7 +69,8 @@ export class SearchComponent implements OnInit {
         }
       }
     }
-    this.isSearchListLoaded=true;
+    // console.log('I waited');
+    // this.isSearchListLoaded=true;
     // console.log("Search list loaded? " + this.isSearchListLoaded);
   }
 

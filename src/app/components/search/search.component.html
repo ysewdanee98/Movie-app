@@ -1,7 +1,7 @@
-<div *ngIf="isServiceLoaded==true">
+<!-- <div *ngIf="isServiceLoaded==true">
   <div *ngIf="isSearchListLoaded==false">
     {{getSearchList()}}
-  </div>
+  </div> -->
   <div *ngIf="listSearched">
     <div style="font-size:20px;">{{'searchRe' | translate}} '{{searchMovies}}' {{'searchReSults' | translate}}</div>
     <div class="filterRating" *ngIf="listSearched.length != 0"><app-filter-rating [ratingSelected]="ratingSelected" [listMoviesNotFiltered]="listSearched" (newRatingEvent)="changeRating($event)"></app-filter-rating></div>
@@ -10,7 +10,7 @@
     </div>
     <div *ngIf="ratingSelected=='All'; then filterAll else filterNotAll"></div>
   </div>
-</div>
+<!-- </div> -->
 
 <ng-template #filterAll>
   <div class = "cardContainer">
